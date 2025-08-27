@@ -72,8 +72,11 @@ Built with:
 ## 📂 Project Structure
 VisionFlow/
 │── VisionFlow Web API/   # Backend (.NET Core 8 API + PostgreSQL)
+
 │── VisionFlow/           # Frontend (React + Tailwind)
+
 │── README.md             # Project Documentation
+
 │── .gitignore
 
 
@@ -84,7 +87,7 @@ Node.js (>= 18)
 .NET 8 SDK
 PostgreSQL
 
-##🚀 Setup & Installation
+## 🚀 Setup & Installation
 1️⃣ Clone the repository
 git clone https://github.com/your-username/VisionFlow.git
 cd VisionFlow
@@ -110,4 +113,5 @@ Contributions are welcome! 🎉
 Fork the repo and create a new branch for your feature/fix.
 Submit a pull request.
 For major changes, please open an issue first to discuss what you’d like to change.
+
 
