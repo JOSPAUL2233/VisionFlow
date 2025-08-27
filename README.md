@@ -70,3 +70,43 @@ Built with:
 ---
 
 ## 📂 Project Structure
+VisionFlow/
+│── VisionFlow Web API/   # Backend (.NET Core 8 API + PostgreSQL)
+│── VisionFlow/           # Frontend (React + Tailwind)
+│── README.md             # Project Documentation
+│── .gitignore
+
+
+⚡ Getting Started
+
+🔧 Prerequisites
+Node.js (>= 18)
+.NET 8 SDK
+PostgreSQL
+
+🚀 Setup & Installation
+1️⃣ Clone the repository
+git clone https://github.com/your-username/VisionFlow.git
+cd VisionFlow
+
+2️⃣ Backend Setup
+cd "VisionFlow Web API"
+dotnet restore
+dotnet run
+
+3️⃣ Frontend Setup
+cd VisionFlow
+npm install
+npm run dev
+
+4️⃣ Database Setup
+Create a PostgreSQL database.
+Update the connection string in appsettings.json.
+Run EF Core migrations (if applicable):
+dotnet ef database update
+
+🤝 Contribution
+Contributions are welcome! 🎉
+Fork the repo and create a new branch for your feature/fix.
+Submit a pull request.
+For major changes, please open an issue first to discuss what you’d like to change.
