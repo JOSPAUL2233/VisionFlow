@@ -1,0 +1,78 @@
+D:\Projects\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\appsettings.Development.json
+D:\Projects\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\appsettings.json
+D:\Projects\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\VisionFlow Web API.staticwebassets.endpoints.json
+D:\Projects\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\VisionFlow Web API.exe
+D:\Projects\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\VisionFlow Web API.deps.json
+D:\Projects\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\VisionFlow Web API.runtimeconfig.json
+D:\Projects\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\VisionFlow Web API.dll
+D:\Projects\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\VisionFlow Web API.pdb
+D:\Projects\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Projects\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Projects\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Microsoft.OpenApi.dll
+D:\Projects\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Npgsql.dll
+D:\Projects\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Projects\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Projects\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.csproj.AssemblyReference.cache
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.AssemblyInfoInputs.cache
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.AssemblyInfo.cs
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.csproj.CoreCompileInputs.cache
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.MvcApplicationPartsAssemblyInfo.cs
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.MvcApplicationPartsAssemblyInfo.cache
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\scopedcss\bundle\VisionFlow Web API.styles.css
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets.build.json
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets.development.json
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets\msbuild.VisionFlow Web API.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets\msbuild.VisionFlow Web API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets\msbuild.build.VisionFlow Web API.props
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.VisionFlow Web API.props
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.VisionFlow Web API.props
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets.pack.json
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFl.5A254F06.Up2Date
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.dll
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\refint\VisionFlow Web API.dll
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.pdb
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.genruntimeconfig.cache
+D:\Projects\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\ref\VisionFlow Web API.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\appsettings.Development.json
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\appsettings.json
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\VisionFlow Web API.staticwebassets.endpoints.json
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\VisionFlow Web API.exe
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\VisionFlow Web API.deps.json
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\VisionFlow Web API.runtimeconfig.json
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\VisionFlow Web API.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\VisionFlow Web API.pdb
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Microsoft.OpenApi.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Npgsql.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.csproj.AssemblyReference.cache
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.AssemblyInfoInputs.cache
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.AssemblyInfo.cs
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.csproj.CoreCompileInputs.cache
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.MvcApplicationPartsAssemblyInfo.cs
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.MvcApplicationPartsAssemblyInfo.cache
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\scopedcss\bundle\VisionFlow Web API.styles.css
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets.build.json
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets.development.json
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets\msbuild.VisionFlow Web API.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets\msbuild.VisionFlow Web API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets\msbuild.build.VisionFlow Web API.props
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.VisionFlow Web API.props
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.VisionFlow Web API.props
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets.pack.json
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFl.5A254F06.Up2Date
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\refint\VisionFlow Web API.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.pdb
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.genruntimeconfig.cache
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\ref\VisionFlow Web API.dll
