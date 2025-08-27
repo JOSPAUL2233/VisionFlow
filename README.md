@@ -84,7 +84,7 @@ Node.js (>= 18)
 .NET 8 SDK
 PostgreSQL
 
-🚀 Setup & Installation
+##🚀 Setup & Installation
 1️⃣ Clone the repository
 git clone https://github.com/your-username/VisionFlow.git
 cd VisionFlow
@@ -105,8 +105,9 @@ Update the connection string in appsettings.json.
 Run EF Core migrations (if applicable):
 dotnet ef database update
 
-🤝 Contribution
+##🤝 Contribution
 Contributions are welcome! 🎉
 Fork the repo and create a new branch for your feature/fix.
 Submit a pull request.
 For major changes, please open an issue first to discuss what you’d like to change.
+
