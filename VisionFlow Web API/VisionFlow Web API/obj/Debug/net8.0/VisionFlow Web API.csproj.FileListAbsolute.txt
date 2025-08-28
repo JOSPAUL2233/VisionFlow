@@ -76,3 +76,4 @@ D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\re
 D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.pdb
 D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.genruntimeconfig.cache
 D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\ref\VisionFlow Web API.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.sourcelink.json

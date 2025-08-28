@@ -5,6 +5,71 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/Project/GetProjectList": {
+      "get": {
+        "tags": [
+          "Project"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Project/CreateProject": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DTO_ProjectDetails"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DTO_ProjectDetails"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DTO_ProjectDetails"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/UserManagement/RegisterUser": {
       "post": {
         "tags": [
@@ -117,6 +182,44 @@
   },
   "components": {
     "schemas": {
+      "DTO_ProjectDetails": {
+        "type": "object",
+        "properties": {
+          "project_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "projectName": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "deadline": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "assignedBy": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "assignedTo": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "DTO_UserRegister": {
         "type": "object",
         "properties": {

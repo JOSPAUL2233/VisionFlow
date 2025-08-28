@@ -1,5 +1,37 @@
 [
   {
+    "ContainingType": "VisionFlow_Web_API.Controllers.ProjectController",
+    "Method": "CreateProject",
+    "RelativePath": "api/Project/CreateProject",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectDto",
+        "Type": "VisionFlow_Web_API.Models.DTO_ProjectDetails",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VisionFlow_Web_API.Controllers.ProjectController",
+    "Method": "GetProjectList",
+    "RelativePath": "api/Project/GetProjectList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "VisionFlow_Web_API.Controllers.UserManagementController",
     "Method": "DeleteUser",
     "RelativePath": "api/UserManagement/DeleteUser/{id}",

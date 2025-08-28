@@ -9,7 +9,11 @@ builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
 // Add services to the container
 builder.Services.AddScoped<IUserManagementRepository, UserManagementRepository>();
+builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
+
+
 builder.Services.AddScoped<IUserManagementService, UserManagementService>();
+builder.Services.AddScoped<IProjectService, ProjectService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

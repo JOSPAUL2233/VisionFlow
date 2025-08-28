@@ -1,19 +1,72 @@
-# Node
-frontend/node_modules
-frontend/.env
+# -------------------------------
+# .NET / C# specific ignores
+# -------------------------------
+[Bb]in/
+[Oo]bj/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+*.json
+*.dbmdl
+*.bak
+*.sql
+*.mdf
+*.ldf
 
-# Build
-frontend/dist
-backend/bin
-backend/obj
-
-# VS Code
-.vscode/
+# User-specific files
 *.user
 *.suo
+*.userosscache
+*.sln.docstates
 
-# Logs
-*.log
+# Rider / VS Code / Visual Studio settings
+.idea/
+.vscode/
+*.vs/
 
-# Others
+# NuGet packages
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+
+# DotNet tools
+.project.lock.json
+project.fragment.lock.json
+
+# -------------------------------
+# React / Node.js specific ignores
+# -------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+package-lock.json
+yarn.lock
+
+# Production build output
+build/
+dist/
+.cache/
+.next/
+out/
+
+# React testing
+coverage/
+*.lcov
+
+# -------------------------------
+# OS-specific ignores
+# -------------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------------
+# Environment variables
+# -------------------------------
 .env
+.env.local
+.env.*.local
