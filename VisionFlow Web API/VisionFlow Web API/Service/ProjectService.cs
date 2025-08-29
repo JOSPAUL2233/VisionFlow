@@ -22,18 +22,15 @@ namespace VisionFlow_Web_API.Service
         {
             return await _ProjectRepository.CreateProject(projectDto);
         }
-        //public async Task<int> UpdateUser(DTO_UserRegister UserRegisterDto)
-        //{
-        //    return await _UserManagementRepository.UpdateUser(UserRegisterDto);
-        //}
-        //public async Task<int> DeleteUser(int Id)
-        //{
-        //    return await _UserManagementRepository.DeleteUser(Id);
-        //}
+        public async Task<int> DeleteProject(DTO_ProjectDetails projectDto)
+        {
+            return await _ProjectRepository.DeleteProject(projectDto);
+        }
 
-        //public async Task<List<DTO_RoleDetails>> GetRoles()
-        //{
-        //    return await _UserManagementRepository.GetRoles();
-        //}
+        public async Task<int> UpdateProject(DTO_ProjectDetails projectDto)
+        {
+            return await _ProjectRepository.UpdateProject(projectDto);
+        }
+
     }
 }

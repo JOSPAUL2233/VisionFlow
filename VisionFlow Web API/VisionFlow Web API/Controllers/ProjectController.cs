@@ -67,74 +67,43 @@ namespace VisionFlow_Web_API.Controllers
             });
         }
 
+        [HttpDelete("DeleteProject")]
+        public async Task<IActionResult> DeleteProject([FromBody] DTO_ProjectDetails projectDto)
+        {
+            int projectId = await _ProjectService.DeleteProject(projectDto);
+            if (projectId == 0)
+            {
+                return NotFound(new
+                {
+                    success = false,
+                    message = "Delete failed. User not found."
+                });
+            }
+            return Ok(new
+            {
+                success = true,
+                message = "User deleted successfully."
+            });
+        }
 
+        [HttpPut("UpdateProject")]
+        public async Task<IActionResult> UpdateProject([FromBody] DTO_ProjectDetails projectDto)
+        {
+            int projectId = await _ProjectService.UpdateProject(projectDto);
+            if (projectId == 0)
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "Update failed. User not found."
+                });
+            }
+            return Ok(new
+            {
+                success = true,
+                message = "User updated successfully."
+            });
+        }
 
-        //[HttpGet("GetRoles")]
-        //public async Task<IActionResult> GetRoles()
-        //{
-        //    var roles = await _UserManagementService.GetRoles();
-
-        //    if (roles == null)
-        //    {
-        //        return Ok(new
-        //        {
-        //            success = false,
-        //            message = "Could not fetch role details.",
-        //            data = roles
-        //        });
-        //    }
-
-        //    if (!roles.Any())
-        //    {
-        //        return Ok(new
-        //        {
-        //            success = false,
-        //            message = "No roles Found.",
-        //            data = roles
-        //        });
-        //    }
-
-        //    return Ok(new
-        //    {
-        //        success = true,
-        //        data = roles
-        //    });
-        //}
-        //[HttpPut("UpdateUser")]
-        //public async Task<IActionResult> UpdateUser([FromBody] DTO_UserRegister userDto)
-        //{
-        //    int userId = await _UserManagementService.UpdateUser(userDto);
-        //    if (userId == 0)
-        //    {
-        //        return BadRequest(new
-        //        {
-        //            success = false,
-        //            message = "Update failed. User not found."
-        //        });
-        //    }
-        //    return Ok(new
-        //    {
-        //        success = true,
-        //        message = "User updated successfully."
-        //    });
-        //}
-        //[HttpDelete("DeleteUser/{id}")]
-        //public async Task<IActionResult> DeleteUser([FromRoute] int Id)
-        //{
-        //    int userId = await _UserManagementService.DeleteUser(Id);
-        //    if (userId == 0)
-        //    {
-        //        return NotFound(new
-        //        {
-        //            success = false,
-        //            message = "Delete failed. User not found."
-        //        });
-        //    }
-        //    return Ok(new
-        //    {
-        //        success = true,
-        //        message = "User deleted successfully."
-        //    });
-        //}
     }
 }

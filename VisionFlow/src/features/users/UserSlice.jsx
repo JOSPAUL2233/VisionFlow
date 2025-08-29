@@ -30,7 +30,7 @@ const UserSlice = createSlice({
       state.currUser = action.payload;
     },
     resetCurrUser: (state) => {
-      state.currUser = { ...initialUser }; // deep copy to avoid mutation
+      state.currUser = { ...initialUser };
       state.onEdit = false;
     },
     setOnEdit: (state, action) => {

@@ -92,124 +92,97 @@ namespace VisionFlow_Web_API.Repository
             return newProjectId;
         }
 
+        public async Task<int> DeleteProject(DTO_ProjectDetails projectDto)
+        {
+            int returnId = 0;
 
-        //public async Task<int> UpdateUser(DTO_UserRegister userDto)
-        //{
-        //    int returnId = 0;
+            try
+            {
+                using (var conn = new NpgsqlConnection(_Configuration.GetConnectionString("PostgresDb")))
+                {
+                    await conn.OpenAsync();
 
-        //    try
-        //    {
-        //        using (var conn = new NpgsqlConnection(_Configuration.GetConnectionString("PostgresDb")))
-        //        {
-        //            await conn.OpenAsync();
+                    using (var cmd = new NpgsqlCommand("CALL sp_delete_project(@p_project_id, @p_user_id, @p_role_id, @p_return_id)", conn))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("p_project_id", projectDto.Project_id);
+                        cmd.Parameters.AddWithValue("p_user_id", 1);
+                        cmd.Parameters.AddWithValue("p_role_id", 1);
+                        cmd.Parameters.AddWithValue("p_return_id", 0);
 
-        //            using (var cmd = new NpgsqlCommand("CALL sp_update_user(@login_name, @first_name, @last_name, @phone_no, @mail_id, @userid,@roleid, @user_id, @role_id, @return_id)", conn))
-        //            {
-        //                cmd.CommandType = CommandType.Text;
+                        using (var reader = await cmd.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                returnId = reader.GetInt32(0);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                Console.WriteLine($"Database error: {ex.Message}");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected error: {ex.Message}");
+                throw;
+            }
 
-        //                cmd.Parameters.AddWithValue("login_name", userDto.LoginName);
-        //                cmd.Parameters.AddWithValue("first_name", userDto.FirstName);
-        //                cmd.Parameters.AddWithValue("last_name", userDto.LastName);
-        //                cmd.Parameters.AddWithValue("phone_no", userDto.PhoneNo);
-        //                cmd.Parameters.AddWithValue("mail_id", userDto.MailId);
-        //                cmd.Parameters.AddWithValue("userid", userDto.UserId);
-        //                cmd.Parameters.AddWithValue("roleid", userDto.UserRoleId);
-        //                cmd.Parameters.AddWithValue("user_id", 1);
-        //                cmd.Parameters.AddWithValue("role_id", 1);
-        //                cmd.Parameters.AddWithValue("return_id", 0);
+            return returnId;
+        }
 
-        //                using (var reader = await cmd.ExecuteReaderAsync())
-        //                {
-        //                    if (await reader.ReadAsync())
-        //                    {
-        //                        returnId = reader.GetInt32(0); // first column = return_id
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (NpgsqlException ex)
-        //    {
-        //        Console.WriteLine($"Database error: {ex.Message}");
-        //        throw;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"Unexpected error: {ex.Message}");
-        //        throw;
-        //    }
+        public async Task<int> UpdateProject(DTO_ProjectDetails projectDto)
+        {
+            int returnId = 0;
 
-        //    return returnId;
-        //}
+            try
+            {
+                using (var conn = new NpgsqlConnection(_Configuration.GetConnectionString("PostgresDb")))
+                {
+                    await conn.OpenAsync();
 
-        //public async Task<int> DeleteUser(int Id)
-        //{
-        //    int returnId = 0;
+                    using (var cmd = new NpgsqlCommand("CALL sp_update_project(@p_project_id, @p_project_name, @p_description, @p_deadline, @p_status, @p_assigned_by,@p_assigned_to, @p_user_id, @p_role_id, @p_returnid)", conn))
+                    {
+                        cmd.CommandType = CommandType.Text;
 
-        //    try
-        //    {
-        //        using (var conn = new NpgsqlConnection(_Configuration.GetConnectionString("PostgresDb")))
-        //        {
-        //            await conn.OpenAsync();
+                        cmd.Parameters.AddWithValue("p_project_id", projectDto.Project_id);
+                        cmd.Parameters.AddWithValue("p_project_name", projectDto.ProjectName);
+                        cmd.Parameters.AddWithValue("p_description", projectDto.Description);
+                        cmd.Parameters.AddWithValue("p_deadline", projectDto.Deadline);
+                        cmd.Parameters.AddWithValue("p_status", projectDto.Status);
+                        cmd.Parameters.AddWithValue("p_assigned_by", projectDto.AssignedBy);
+                        cmd.Parameters.AddWithValue("p_assigned_to", projectDto.AssignedTo);
+                        cmd.Parameters.AddWithValue("p_user_id", 1);
+                        cmd.Parameters.AddWithValue("p_role_id", 1);
+                        cmd.Parameters.AddWithValue("p_returnid", 0);
 
-        //            using (var cmd = new NpgsqlCommand("CALL sp_delete_user(@userid, @user_id, @role_id, @return_id)", conn))
-        //            {
-        //                cmd.CommandType = CommandType.Text;
-        //                cmd.Parameters.AddWithValue("userid", Id);
-        //                cmd.Parameters.AddWithValue("user_id", 1);
-        //                cmd.Parameters.AddWithValue("role_id", 1);
-        //                cmd.Parameters.AddWithValue("return_id", 0);
+                        using (var reader = await cmd.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                returnId = reader.GetInt32(0);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                Console.WriteLine($"Database error: {ex.Message}");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected error: {ex.Message}");
+                throw;
+            }
 
-        //                using (var reader = await cmd.ExecuteReaderAsync())
-        //                {
-        //                    if (await reader.ReadAsync())
-        //                    {
-        //                        returnId = reader.GetInt32(0); // first column = return_id
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (NpgsqlException ex)
-        //    {
-        //        Console.WriteLine($"Database error: {ex.Message}");
-        //        throw;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"Unexpected error: {ex.Message}");
-        //        throw;
-        //    }
-
-        //    return returnId;
-        //}
-
+            return returnId;
+        }
 
 
-        //public async Task<List<DTO_RoleDetails>> GetRoles()
-        //{
-        //    var users = new List<DTO_RoleDetails>();
-        //    using (var conn = new NpgsqlConnection(_Configuration.GetConnectionString("PostgresDb")))
-        //    {
-        //        await conn.OpenAsync();
-
-        //        using (var cmd = new NpgsqlCommand("SELECT * FROM get_roles()", conn))
-        //        {
-        //            using (var reader = await cmd.ExecuteReaderAsync())
-        //            {
-        //                while (await reader.ReadAsync())
-        //                {
-        //                    users.Add(new DTO_RoleDetails
-        //                    {
-        //                        RoleId = reader.GetInt32(reader.GetOrdinal("id")),
-        //                        RoleName = reader.GetString(reader.GetOrdinal("role_name"))
-
-        //                    });
-        //                }
-        //            }
-        //        }
-        //    }
-        //    return users;
-        //}
     }
 }

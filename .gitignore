@@ -8,12 +8,15 @@
 *.pdb
 *.cache
 *.log
-*.json
 *.dbmdl
 *.bak
 *.sql
 *.mdf
 *.ldf
+
+# Ignore JSON only in bin/obj (not globally, so package.json stays tracked)
+[Bb]in/**/*.json
+[Oo]bj/**/*.json
 
 # User-specific files
 *.user

@@ -5,9 +5,15 @@ import UserCol from "../ui/tableElements/UserCol";
 import Col from "../ui/tableElements/Col";
 import Td from "../ui/tableElements/Td";
 import Tr from "../ui/tableElements/Tr";
+import { resetCurrUser } from "../features/users/UserSlice";
+import { useSelector } from "react-redux";
 
 
-function TableList({content,list,handleEdit,deleteUser}){
+function TableList({content,list,handleEdit,handleDelete}){
+
+
+  const {currUser} = useSelector(state=>state.user);
+
     return <>
 
         <div className="bg-white/80 backdrop-blur-sm shadow-xl rounded-2xl border border-white/20 overflow-hidden">
@@ -78,7 +84,7 @@ function TableList({content,list,handleEdit,deleteUser}){
                       <Td>
                         <div className="flex justify-center gap-4">
                           <EditButton onClick={() => handleEdit(user)}/>
-                          <DeleteButton onClick={() => deleteUser(user.userId)}/>
+                          <DeleteButton onClick={() => handleDelete(user)}/>
                         </div>
                       </Td>
                     </Tr>

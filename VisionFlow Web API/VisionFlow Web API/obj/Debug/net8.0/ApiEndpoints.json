@@ -17,15 +17,47 @@
   },
   {
     "ContainingType": "VisionFlow_Web_API.Controllers.ProjectController",
+    "Method": "DeleteProject",
+    "RelativePath": "api/Project/DeleteProject",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectDto",
+        "Type": "VisionFlow_Web_API.Models.DTO_ProjectDetails",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VisionFlow_Web_API.Controllers.ProjectController",
     "Method": "GetProjectList",
     "RelativePath": "api/Project/GetProjectList",
-    "HttpMethod": "GET",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "userId",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VisionFlow_Web_API.Controllers.ProjectController",
+    "Method": "UpdateProject",
+    "RelativePath": "api/Project/UpdateProject",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectDto",
+        "Type": "VisionFlow_Web_API.Models.DTO_ProjectDetails",
         "IsRequired": true
       }
     ],

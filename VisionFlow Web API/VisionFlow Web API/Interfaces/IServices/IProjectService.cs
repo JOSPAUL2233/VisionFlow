@@ -7,7 +7,7 @@ namespace VisionFlow_Web_API.Interfaces.IServices
     {
         Task<List<DTO_ProjectDetails>> GetProjectList(int UserId);
         Task<int> CreateProject(DTO_ProjectDetails projectDto);
-        //Task<int> UpdateUser(DTO_UserRegister UserRegisterDto);
-        //Task<int> DeleteUser(int Id);
+        Task<int> UpdateProject(DTO_ProjectDetails projectDto);
+        Task<int> DeleteProject(DTO_ProjectDetails projectDto);
     }
 }
