@@ -13,6 +13,7 @@ import FieldLabel from "../../ui/formElements/FieldLabel";
 import GreenButton from "../../ui/GreenButton";
 import GrayButton from "../../ui/GrayButton";
 import Select from "../../ui/formElements/Select";
+import Modal from "../../components/Modal";
 
 
 function UserManagement() {
@@ -31,6 +32,7 @@ function UserManagement() {
     returnId: 0,
   };  
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
   //could also be handled locally also
   const {currUser,onEdit} = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -57,6 +59,7 @@ function UserManagement() {
       onSuccess: () => {
         queryClient.invalidateQueries(["users"]);
         handleReset();
+        setIsModalOpen(false);
         toast.success("User registered successfully 🎉");
       },
       onError: (err) => {
@@ -69,6 +72,7 @@ function UserManagement() {
       onSuccess: () => {
         queryClient.invalidateQueries(["users"]);
         handleReset();
+        setIsModalOpen(false);
         toast.success("User updated successfully 🎉");
       },
       onError: () => {
@@ -110,6 +114,7 @@ function UserManagement() {
     console.log("inside handleEdit,userDetails:",userDetails)
     dispatch(setOnEdit(true));
     dispatch(setCurrUser(userDetails))
+    setIsModalOpen(true);
   };
 
   const handleDelete = (user) => {
@@ -159,8 +164,19 @@ if (isUpdating) {
 
         <Headline Icon={<Users className="h-8 w-8 text-white" />} Headline={"User Management"} SubHeadline={"Manage your team members and user accounts"}/>
 
+        <div className="mb-6">
+          <GreenButton onClick={() => setIsModalOpen(true)}>
+            <UserPlus className="h-4 w-4 mr-2" />
+            Register User
+          </GreenButton>
+        </div>
+
+
 {/*----------------------------------------------------------ADD/EDIT USER---------------------------------------------------------- */}
-        <div className="bg-white/80 backdrop-blur-sm shadow-xl rounded-2xl p-8 mb-8 border border-white/20">
+        
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        
+        {/* <div className="bg-white/80 backdrop-blur-sm shadow-xl rounded-2xl p-6 mb-0 border border-white/20"> */}
           <div className="flex items-center mb-6">
             <div className="bg-gradient-to-r from-emerald-500 to-green-600 p-2 rounded-lg mr-3">
               <UserPlus className="h-5 w-5 text-white" />
@@ -287,8 +303,9 @@ if (isUpdating) {
               </GrayButton>
             )}
           </div>
-        </div>
+        {/* </div> */}
 
+        </Modal>
 {/*----------------------------------------------------------USER LIST---------------------------------------------------------- */}
         <TableList content={"User"} list={list} handleEdit={handleEdit} handleDelete={handleDelete}/>
       </div>
