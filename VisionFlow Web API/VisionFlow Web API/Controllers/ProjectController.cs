@@ -18,32 +18,32 @@ namespace VisionFlow_Web_API.Controllers
         [HttpPost("GetProjectList")]
         public async Task<IActionResult> GetProjectList([FromBody] int userId)
         {
-            var users = await _ProjectService.GetProjectList(userId);
+            var projects = await _ProjectService.GetProjectList(userId);
 
-            if (users == null)
+            if (projects == null)
             {
                 return Ok(new
                 {
                     success = false,
                     message = "Could not fetch user details.",
-                    data = users
+                    data = projects
                 });
             }
 
-            if (!users.Any())
+            if (!projects.Any())
             {
                 return Ok(new
                 {
                     success = false,
                     message = "No Users Found.",
-                    data = users
+                    data = projects
                 });
             }
 
             return Ok(new
             {
                 success = true,
-                data = users
+                data = projects
             });
         }
 

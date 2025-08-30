@@ -124,6 +124,11 @@ function UserManagement() {
     deleteUser(user.userId);
   }
 
+  const handleOnClose = () => {
+    setIsModalOpen(false);
+    dispatch(resetCurrUser());
+  }
+  
   const handleReset = () => {
     dispatch(resetCurrUser());
   };
@@ -174,7 +179,7 @@ if (isUpdating) {
 
 {/*----------------------------------------------------------ADD/EDIT USER---------------------------------------------------------- */}
         
-        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <Modal isOpen={isModalOpen} onClose={handleOnClose}>
         
         {/* <div className="bg-white/80 backdrop-blur-sm shadow-xl rounded-2xl p-6 mb-0 border border-white/20"> */}
           <div className="flex items-center mb-6">
