@@ -30,9 +30,5 @@ namespace VisionFlow_Web_API.Service
         {
             return await _UserManagementRepository.GetUserList();
         }
-        public async Task<List<DTO_RoleDetails>> GetRoles()
-        {
-            return await _UserManagementRepository.GetRoles();
-        }
     }
 }

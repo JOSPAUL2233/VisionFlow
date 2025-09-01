@@ -8,6 +8,7 @@ const initialUser = {
   mailId: "",
   password: "",
   userRoleId:0,
+  roleName:"",
   userId: 0,
   roleId: 0,
   returnId: 0,

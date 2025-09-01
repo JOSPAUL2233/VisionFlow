@@ -14,7 +14,7 @@ const usersApi = {
     return axiosClient.delete(`/UserManagement/DeleteUser/${id}`)
   },
   getRoles: () => {
-    return axiosClient.get("/UserManagement/GetRoles")
+    return axiosClient.get("/Common/GetRoles")
   }
 };
 

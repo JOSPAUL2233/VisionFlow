@@ -52,9 +52,9 @@ function TableList({content,list,handleEdit,handleDelete}){
                     <th className="px-8 py-4 text-left font-semibold text-slate-700 border-b border-slate-200">
                       LogIn Name
                     </th>
-                    {/* <th className="px-8 py-4 text-left font-semibold text-slate-700 border-b border-slate-200">
+                    <th className="px-8 py-4 text-left font-semibold text-slate-700 border-b border-slate-200">
                       Role
-                    </th> */}
+                    </th>
                     <th className="px-8 py-4 text-left font-semibold text-slate-700 border-b border-slate-200">
                       Contact
                     </th>
@@ -80,11 +80,11 @@ function TableList({content,list,handleEdit,handleDelete}){
                             {user.loginName}
                         </Col>
                       </Td>
-                      {/* <Td>
-                        <UserCol id={user.userId} letter={user.firstName.charAt(0).toUpperCase()}>
-                            {user.role}
-                        </UserCol>
-                      </Td> */}
+                      <Td>
+                        <Col>
+                            {user.roleName}
+                        </Col>
+                      </Td>
                       <Td>
                         <Col>
                             <Phone className="h-4 w-4 mr-2 text-slate-500" />

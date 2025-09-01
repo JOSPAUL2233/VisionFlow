@@ -8,7 +8,6 @@ namespace VisionFlow_Web_API.Interfaces.IRepositories
         Task<int> UpdateUser(DTO_UserRegister UserRegisterDto);
         Task<int> DeleteUser(int Id);
         Task<List<DTO_UserProfile>> GetUserList();
-        Task<List<DTO_RoleDetails>> GetRoles();
 
     }
 }

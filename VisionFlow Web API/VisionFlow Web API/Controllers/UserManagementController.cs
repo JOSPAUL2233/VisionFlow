@@ -68,37 +68,6 @@ namespace VisionFlow_Web_API.Controllers
             });
         }
 
-        [HttpGet("GetRoles")]
-        public async Task<IActionResult> GetRoles()
-        {
-            var roles = await _UserManagementService.GetRoles();
-
-            if (roles == null)
-            {
-                return Ok(new
-                {
-                    success = false,
-                    message = "Could not fetch role details.",
-                    data = roles
-                });
-            }
-
-            if (!roles.Any())
-            {
-                return Ok(new
-                {
-                    success = false,
-                    message = "No roles Found.",
-                    data = roles
-                });
-            }
-
-            return Ok(new
-            {
-                success = true,
-                data = roles
-            });
-        }
         [HttpPut("UpdateUser")]
         public async Task<IActionResult> UpdateUser([FromBody] DTO_UserRegister userDto)
         {

@@ -1,5 +1,41 @@
 [
   {
+    "ContainingType": "VisionFlow_Web_API.Controllers.CommonController",
+    "Method": "GetAssignedToList",
+    "RelativePath": "api/Common/GetAssignedToList",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "para",
+        "Type": "VisionFlow_Web_API.Models.DTO_GetAssignedToPARA",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VisionFlow_Web_API.Controllers.CommonController",
+    "Method": "GetProjectStatusList",
+    "RelativePath": "api/Common/GetProjectStatusList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VisionFlow_Web_API.Controllers.CommonController",
+    "Method": "GetRoles",
+    "RelativePath": "api/Common/GetRoles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "VisionFlow_Web_API.Controllers.ProjectController",
     "Method": "CreateProject",
     "RelativePath": "api/Project/CreateProject",
@@ -77,16 +113,6 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "VisionFlow_Web_API.Controllers.UserManagementController",
-    "Method": "GetRoles",
-    "RelativePath": "api/UserManagement/GetRoles",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
     "ReturnTypes": []
   },
   {

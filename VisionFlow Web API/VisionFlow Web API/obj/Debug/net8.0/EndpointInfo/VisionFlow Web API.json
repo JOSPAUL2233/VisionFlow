@@ -5,6 +5,61 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/Common/GetRoles": {
+      "get": {
+        "tags": [
+          "Common"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Common/GetProjectStatusList": {
+      "get": {
+        "tags": [
+          "Common"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Common/GetAssignedToList": {
+      "post": {
+        "tags": [
+          "Common"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DTO_GetAssignedToPARA"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DTO_GetAssignedToPARA"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DTO_GetAssignedToPARA"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Project/GetProjectList": {
       "post": {
         "tags": [
@@ -175,18 +230,6 @@
         }
       }
     },
-    "/api/UserManagement/GetRoles": {
-      "get": {
-        "tags": [
-          "UserManagement"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/UserManagement/UpdateUser": {
       "put": {
         "tags": [
@@ -244,6 +287,20 @@
   },
   "components": {
     "schemas": {
+      "DTO_GetAssignedToPARA": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "roleId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "DTO_ProjectDetails": {
         "type": "object",
         "properties": {

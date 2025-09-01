@@ -162,7 +162,7 @@ namespace VisionFlow_Web_API.Repository
             {
                 await conn.OpenAsync();
 
-                using (var cmd = new NpgsqlCommand("SELECT * FROM get_user_list()", conn))
+                using (var cmd = new NpgsqlCommand("SELECT * FROM fn_get_user_list()", conn))
                 {
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
@@ -174,6 +174,7 @@ namespace VisionFlow_Web_API.Repository
                                 LoginName = reader.GetString(reader.GetOrdinal("login_name")),
                                 UserRoleId = reader.GetInt32(reader.GetOrdinal("role_id")),
                                 FirstName = reader.GetString(reader.GetOrdinal("first_name")),
+                                RoleName = reader.GetString(reader.GetOrdinal("role_name")),
                                 LastName = reader.GetString(reader.GetOrdinal("last_name")),
                                 PhoneNo = reader.GetString(reader.GetOrdinal("phone_no")),
                                 Password = reader.GetString(reader.GetOrdinal("password")),
@@ -186,30 +187,6 @@ namespace VisionFlow_Web_API.Repository
             return users;
         }
 
-        public async Task<List<DTO_RoleDetails>> GetRoles()
-        {
-            var users = new List<DTO_RoleDetails>();
-            using (var conn = new NpgsqlConnection(_Configuration.GetConnectionString("PostgresDb")))
-            {
-                await conn.OpenAsync();
-
-                using (var cmd = new NpgsqlCommand("SELECT * FROM get_roles()", conn))
-                {
-                    using (var reader = await cmd.ExecuteReaderAsync())
-                    {
-                        while (await reader.ReadAsync())
-                        {
-                            users.Add(new DTO_RoleDetails
-                            {
-                                RoleId = reader.GetInt32(reader.GetOrdinal("id")),
-                                RoleName = reader.GetString(reader.GetOrdinal("role_name"))
-
-                            });
-                        }
-                    }
-                }
-            }
-            return users;
-        }
+        
     }
 }

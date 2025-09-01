@@ -20,7 +20,7 @@ namespace VisionFlow_Web_API.Repository
             {
                 await conn.OpenAsync();
 
-                using (var cmd = new NpgsqlCommand("SELECT * FROM sp_get_project_list(@p_user_id)", conn))
+                using (var cmd = new NpgsqlCommand("SELECT * FROM fn_get_project_list(@p_user_id)", conn))
                 {
                     cmd.Parameters.AddWithValue("p_user_id", UserId);
                     using (var reader = await cmd.ExecuteReaderAsync())
