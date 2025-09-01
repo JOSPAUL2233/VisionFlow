@@ -1,7 +1,8 @@
 import React,{ useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setCurrUser,resetCurrUser,setOnEdit, setField } from "./UserSlice";
-import usersApi from "../../api/usersAPI";
+import { setCurrUser,initialUser,resetCurrUser,setOnEdit, setField } from "./UserSlice";
+import usersApi from "../../api/usersApi";
+import commonApi from "../../api/commonApi";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { Users, UserPlus, Edit3, Trash2, X, Mail, Phone, User } from "lucide-react";
@@ -18,20 +19,6 @@ import Modal from "../../components/Modal";
 
 function UserManagement() {
   const queryClient = useQueryClient();
-
-  const initialUser = {
-    loginName: "",
-    firstName: "",
-    lastName: "",
-    phoneNo: "",
-    mailId: "",
-    password: "",
-    userRoleId:0,
-    roleName:"",
-    userId: 0,
-    roleId: 0,
-    returnId: 0,
-  };  
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   //could also be handled locally also
@@ -98,7 +85,7 @@ function UserManagement() {
     const { data: roleList = [] } = useQuery({
       queryKey: ["roleList"],
       queryFn: async () => {
-          const res = await usersApi.getRoles();
+          const res = await commonApi.getRoles();
           console.log("get roles:",res);
           return res.data.data;
       },

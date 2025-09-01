@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Provider } from "react-redux";
 import { store } from "./app/Store"
 import { ToastContainer } from "react-toastify";
-import UserManagementIndex from "./pages/UserManagementIndex"
+import UserManagementHome from "./pages/UserManagementHome"
 
 function App() {
   
@@ -21,7 +21,7 @@ const queryClient = new QueryClient();
           pauseOnHover
           toastClassName="rounded-lg shadow-xl"
         />
-        <UserManagementIndex />
+        <UserManagementHome />
       </QueryClientProvider>
     </Provider>
     </>

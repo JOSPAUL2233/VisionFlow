@@ -174,7 +174,7 @@ namespace VisionFlow_Web_API.Repository
                                 LoginName = reader.GetString(reader.GetOrdinal("login_name")),
                                 UserRoleId = reader.GetInt32(reader.GetOrdinal("role_id")),
                                 FirstName = reader.GetString(reader.GetOrdinal("first_name")),
-                                RoleName = reader.GetString(reader.GetOrdinal("role_name")),
+                                RoleName = reader.IsDBNull(reader.GetOrdinal("role_name")) ? null : reader.GetString(reader.GetOrdinal("role_name")),
                                 LastName = reader.GetString(reader.GetOrdinal("last_name")),
                                 PhoneNo = reader.GetString(reader.GetOrdinal("phone_no")),
                                 Password = reader.GetString(reader.GetOrdinal("password")),

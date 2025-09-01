@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialUser = {
+export const initialUser = {
   loginName: "",
   firstName: "",
   lastName: "",

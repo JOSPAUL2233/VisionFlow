@@ -1,9 +1,9 @@
 import UserManagement from "../features/users/UserManagement";
 
-function UserManagementIndex(){
+function UserManagementHome(){
     return <>
         <UserManagement/>
     </>
 }
 
-export default UserManagementIndex;
+export default UserManagementHome;
