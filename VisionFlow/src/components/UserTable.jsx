@@ -9,7 +9,7 @@ import { resetCurrUser } from "../features/users/UserSlice";
 import { useSelector } from "react-redux";
 
 
-function TableList({content,list,handleEdit,handleDelete}){
+function UserTable({content,list,handleEdit,handleDelete}){
 
 
   const {currUser} = useSelector(state=>state.user);
@@ -113,4 +113,4 @@ function TableList({content,list,handleEdit,handleDelete}){
         </div>    
     </>
 }
-export default TableList;
+export default UserTable;

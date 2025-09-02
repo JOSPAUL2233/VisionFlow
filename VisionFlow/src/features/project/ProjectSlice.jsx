@@ -1,16 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialProject = {
+export const initialProject = {
   projectId: 0,
   projectName: "",
   description: "",
-  deadline: "", // keep deadline as string (ISO format)
+  deadline: "",
   status: 1,
-  assigned_by: 0,
-  assigned_to: 0,
+  statusDesc:"",
+  assignedBy: 0,
+  assignedByDesc: "",
+  assignedTo: 0,
+  assignedToDesc: "",
   userId: 0,
   roleId: 0,
-  returnId: 0,
+  returnId: 0,  
 };
 
 const initialProjectState = {

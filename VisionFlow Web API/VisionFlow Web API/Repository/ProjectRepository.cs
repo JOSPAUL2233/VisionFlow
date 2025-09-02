@@ -29,12 +29,17 @@ namespace VisionFlow_Web_API.Repository
                         {
                             users.Add(new DTO_ProjectDetails
                             {
-                                Project_id = reader.GetInt32(reader.GetOrdinal("project_id")),
+                                ProjectId = reader.GetInt32(reader.GetOrdinal("project_id")),
                                 ProjectName = reader.GetString(reader.GetOrdinal("project_name")),
                                 Description = reader.GetString(reader.GetOrdinal("description")),
                                 Deadline = reader.GetDateTime(reader.GetOrdinal("deadline")),
+                                Status = reader.GetInt32(reader.GetOrdinal("status")),
+                                StatusDesc = reader.IsDBNull(reader.GetOrdinal("status_desc")) ? null : reader.GetString(reader.GetOrdinal("status_desc")),
                                 AssignedBy = reader.GetInt32(reader.GetOrdinal("assigned_by")),
-                                AssignedTo = reader.GetInt32(reader.GetOrdinal("assigned_to"))
+                                AssignedByDesc = reader.IsDBNull(reader.GetOrdinal("assigned_by_desc")) ? null : reader.GetString(reader.GetOrdinal("assigned_by_desc")),
+                                AssignedTo = reader.GetInt32(reader.GetOrdinal("assigned_to")),
+                                AssignedToDesc = reader.IsDBNull(reader.GetOrdinal("assigned_to_desc")) ? null : reader.GetString(reader.GetOrdinal("assigned_to_desc"))
+
                             });
                         }
                     }
@@ -105,7 +110,7 @@ namespace VisionFlow_Web_API.Repository
                     using (var cmd = new NpgsqlCommand("CALL sp_delete_project(@p_project_id, @p_user_id, @p_role_id, @p_return_id)", conn))
                     {
                         cmd.CommandType = CommandType.Text;
-                        cmd.Parameters.AddWithValue("p_project_id", projectDto.Project_id);
+                        cmd.Parameters.AddWithValue("p_project_id", projectDto.ProjectId);
                         cmd.Parameters.AddWithValue("p_user_id", 1);
                         cmd.Parameters.AddWithValue("p_role_id", 1);
                         cmd.Parameters.AddWithValue("p_return_id", 0);
@@ -148,7 +153,7 @@ namespace VisionFlow_Web_API.Repository
                     {
                         cmd.CommandType = CommandType.Text;
 
-                        cmd.Parameters.AddWithValue("p_project_id", projectDto.Project_id);
+                        cmd.Parameters.AddWithValue("p_project_id", projectDto.ProjectId);
                         cmd.Parameters.AddWithValue("p_project_name", projectDto.ProjectName);
                         cmd.Parameters.AddWithValue("p_description", projectDto.Description);
                         cmd.Parameters.AddWithValue("p_deadline", projectDto.Deadline);

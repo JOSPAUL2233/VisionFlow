@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { store } from "./app/Store"
 import { ToastContainer } from "react-toastify";
 import UserManagementHome from "./pages/UserManagementHome"
+import ProjectHome from "./pages/ProjectHome";
 
 function App() {
   
@@ -21,7 +22,8 @@ const queryClient = new QueryClient();
           pauseOnHover
           toastClassName="rounded-lg shadow-xl"
         />
-        <UserManagementHome />
+        {/* <UserManagementHome /> */}
+        <ProjectHome />
       </QueryClientProvider>
     </Provider>
     </>

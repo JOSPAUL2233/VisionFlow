@@ -7,7 +7,6 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { Users, UserPlus, Edit3, Trash2, X, Mail, Phone, User } from "lucide-react";
 import "react-toastify/dist/ReactToastify.css";
-import TableList from "../../components/TableList";
 import Headline from "../../ui/Headline";
 import InputField from "../../ui/formElements/InputField";
 import FieldLabel from "../../ui/formElements/FieldLabel";
@@ -15,6 +14,7 @@ import GreenButton from "../../ui/GreenButton";
 import GrayButton from "../../ui/GrayButton";
 import Select from "../../ui/formElements/Select";
 import Modal from "../../components/Modal";
+import UserTable from "../../components/UserTable";
 
 
 function UserManagement() {
@@ -82,7 +82,7 @@ function UserManagement() {
   });
 
   //-------------------------------------GET ROLE LIST---------------------------------
-    const { data: roleList = [] } = useQuery({
+  const { data: roleList = [] } = useQuery({
       queryKey: ["roleList"],
       queryFn: async () => {
           const res = await commonApi.getRoles();
@@ -90,7 +90,6 @@ function UserManagement() {
           return res.data.data;
       },
   });
-
 
   const validateUser = (userDetails) => {
     return Object.keys(initialUser).some(
@@ -300,7 +299,7 @@ if (isUpdating) {
 
         </Modal>
 {/*----------------------------------------------------------USER LIST---------------------------------------------------------- */}
-        <TableList content={"User"} list={list} handleEdit={handleEdit} handleDelete={handleDelete}/>
+        <UserTable content={"User"} list={list} handleEdit={handleEdit} handleDelete={handleDelete}/>
       </div>
     </div>
   );

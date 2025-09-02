@@ -1,9 +1,19 @@
 import axiosClient from "./axiosClient";
 
-const usersApi = {
+const commonApi = {
   getRoles: () => {
     return axiosClient.get("/Common/GetRoles")
+  },
+  getProjectStatusList: () => {
+    return axiosClient.get("/Common/GetProjectStatusList")
+  },  
+  getAssignedToList: () => {
+    return axiosClient.post("/Common/GetAssignedToList",{
+    "userId": 1,
+    "roleId": 3
+  }
+)
   }
 };
 
-export default usersApi;
+export default commonApi;

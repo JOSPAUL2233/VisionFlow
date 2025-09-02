@@ -1,10 +1,11 @@
 import axiosClient from "./axiosClient";
 
-const usersApi = {
+const projectApi = {
   getProjectList: () => {
-    return axiosClient.get("/Project/GetProjectList")
+    return axiosClient.post("/Project/GetProjectList","1")
   },
   createProject: (project) => {
+    console.log("project:",project);
     return axiosClient.post("/Project/CreateProject", project)
   },
   updateProject: (project) => {
@@ -15,4 +16,4 @@ const usersApi = {
   }
 };
 
-export default usersApi;
+export default projectApi;
