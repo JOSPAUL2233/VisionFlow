@@ -5,6 +5,7 @@ import commonApi from "../../api/commonApi";
 import { useSelector, useDispatch } from "react-redux";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { toast } from "react-toastify";
 import ProjectTable from "../../components/ProjectTable";
 import { setField, setCurrProject, resetCurrProject, setOnEdit, initialProject } from "./ProjectSlice";
 import { FolderKanban, UserPlus, Users } from "lucide-react";
@@ -58,6 +59,20 @@ function ProjectDetails(){
         },
     });
 
+    //-----------------------------------DELETE USER-----------------------------------
+    const { mutate: deleteProject, isPending: isDeleting } = useMutation({
+        mutationFn: async (project) => {
+            return await projectApi.deleteProject(project); 
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries(["projects"]);
+            toast.success("Project deleted successfully ✅");
+        },
+        onError: () => {
+            toast.error("Failed to delete Project ❌");
+        },
+    });
+
 
     //-------------------------------------GET STATUS LIST---------------------------------
     const { data: statusList = [] } = useQuery({
@@ -82,7 +97,7 @@ function ProjectDetails(){
 
     const validateProject = (projectDetails) => {
         return Object.keys(initialProject).some(
-        (key) => initialProject[key] !== projectDetails[key]
+            (key) => initialProject[key] !== projectDetails[key]
         );
     }
 
@@ -117,7 +132,11 @@ function ProjectDetails(){
         );
     }
 
-
+    if (isDeleting) {
+        return (
+            <div className="p-12 text-center text-slate-600">Deleting user...</div>
+        );
+    }
 
     return <>
         <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 p-6 md:p-8">  
@@ -246,7 +265,7 @@ function ProjectDetails(){
                     {/* </div> */}
 
                 </Modal>
-                <ProjectTable content={"Project"} projectList={projectList} handleEdit={(project)=>{}} handleDelete={(project)=>{}}/>
+                <ProjectTable content={"Project"} projectList={projectList} handleEdit={(project)=>{}} handleDelete={deleteProject}/>
 
             </div>
         </div>

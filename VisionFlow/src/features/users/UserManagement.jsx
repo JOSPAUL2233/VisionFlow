@@ -70,7 +70,7 @@ function UserManagement() {
   //-----------------------------------DELETE USER-----------------------------------
   const { mutate: deleteUser, isPending: isDeleting } = useMutation({
       mutationFn: async (id) => {
-        return await usersApi.deleteUser(id);  // ✅ await ensures rejection is caught
+        return await usersApi.deleteUser(id); 
       },
       onSuccess: () => {
         queryClient.invalidateQueries(["users"]);
