@@ -196,17 +196,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DTO_UserRegister"
+                "$ref": "#/components/schemas/DTO_UserDetails"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/DTO_UserRegister"
+                "$ref": "#/components/schemas/DTO_UserDetails"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/DTO_UserRegister"
+                "$ref": "#/components/schemas/DTO_UserDetails"
               }
             }
           }
@@ -239,17 +239,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DTO_UserRegister"
+                "$ref": "#/components/schemas/DTO_UserDetails"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/DTO_UserRegister"
+                "$ref": "#/components/schemas/DTO_UserDetails"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/DTO_UserRegister"
+                "$ref": "#/components/schemas/DTO_UserDetails"
               }
             }
           }
@@ -366,10 +366,36 @@
         },
         "additionalProperties": false
       },
-      "DTO_UserRegister": {
+      "DTO_UserDetails": {
         "type": "object",
         "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "profileId": {
+            "type": "integer",
+            "format": "int32"
+          },
           "loginName": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "userRoleId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "roleId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "roleName": {
             "type": "string",
             "nullable": true
           },
@@ -388,26 +414,6 @@
           "mailId": {
             "type": "string",
             "nullable": true
-          },
-          "password": {
-            "type": "string",
-            "nullable": true
-          },
-          "userRoleId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "userId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "roleId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "returnId": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false

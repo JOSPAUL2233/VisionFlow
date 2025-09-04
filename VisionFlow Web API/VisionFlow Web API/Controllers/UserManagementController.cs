@@ -17,7 +17,7 @@ namespace VisionFlow_Web_API.Controllers
         }
 
         [HttpPost("RegisterUser")]
-        public async Task<IActionResult> RegisterUser([FromBody] DTO_UserRegister userDto)
+        public async Task<IActionResult> RegisterUser([FromBody] DTO_UserDetails userDto)
         {
             int userId = await _UserManagementService.RegisterUser(userDto);
             if (userId == 0)
@@ -69,7 +69,7 @@ namespace VisionFlow_Web_API.Controllers
         }
 
         [HttpPut("UpdateUser")]
-        public async Task<IActionResult> UpdateUser([FromBody] DTO_UserRegister userDto)
+        public async Task<IActionResult> UpdateUser([FromBody] DTO_UserDetails userDto)
         {
             int userId = await _UserManagementService.UpdateUser(userDto);
             if (userId == 0)

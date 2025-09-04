@@ -8,10 +8,10 @@ const projectApi = {
     return axiosClient.post("/Project/CreateProject", project)
   },
   updateProject: (project) => {
+    console.log("project update:", project);
     return axiosClient.put("/Project/UpdateProject", project)
   },
   deleteProject: (project) => {
-    console.log("project del:", project);
     return axiosClient.delete("/Project/DeleteProject", {
       data: project
     });

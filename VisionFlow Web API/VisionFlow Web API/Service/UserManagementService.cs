@@ -13,11 +13,11 @@ namespace VisionFlow_Web_API.Service
         {
             _UserManagementRepository = repo;
         }
-        public async Task<int> RegisterUser(DTO_UserRegister UserRegisterDto)
+        public async Task<int> RegisterUser(DTO_UserDetails UserRegisterDto)
         {
             return await _UserManagementRepository.RegisterUser(UserRegisterDto);
         }
-        public async Task<int> UpdateUser(DTO_UserRegister UserRegisterDto)
+        public async Task<int> UpdateUser(DTO_UserDetails UserRegisterDto)
         {
             return await _UserManagementRepository.UpdateUser(UserRegisterDto);
         }
@@ -26,7 +26,7 @@ namespace VisionFlow_Web_API.Service
             return await _UserManagementRepository.DeleteUser(Id);
         }
         
-        public async Task<List<DTO_UserProfile>> GetUserList()
+        public async Task<List<DTO_UserDetails>> GetUserList()
         {
             return await _UserManagementRepository.GetUserList();
         }

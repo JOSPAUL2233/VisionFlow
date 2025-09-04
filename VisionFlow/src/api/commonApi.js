@@ -10,7 +10,7 @@ const commonApi = {
   getAssignedToList: () => {
     return axiosClient.post("/Common/GetAssignedToList",{
     "userId": 1,
-    "roleId": 3
+    "roleId": 2
   }
 )
   }

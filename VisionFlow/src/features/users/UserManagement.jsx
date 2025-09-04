@@ -56,7 +56,9 @@ function UserManagement() {
   });
   //-----------------------------------UPDATE USER-----------------------------------
   const { mutate: updateUser, isPending: isUpdating } = useMutation({
-      mutationFn: usersApi.updateUser,
+      mutationFn: async (userDetails) => {
+        return await usersApi.updateUser(userDetails);
+      },
       onSuccess: () => {
         queryClient.invalidateQueries(["users"]);
         handleReset();

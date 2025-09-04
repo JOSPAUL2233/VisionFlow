@@ -14,7 +14,7 @@ namespace VisionFlow_Web_API.Repository
             _Configuration = config;
         }
 
-        public async Task<int> RegisterUser(DTO_UserRegister userDto)
+        public async Task<int> RegisterUser(DTO_UserDetails userDto)
         {
             int newUserId = 0;
 
@@ -64,7 +64,7 @@ namespace VisionFlow_Web_API.Repository
         }
 
         
-        public async Task<int> UpdateUser(DTO_UserRegister userDto)
+        public async Task<int> UpdateUser(DTO_UserDetails userDto)
         {
             int returnId = 0;
 
@@ -155,9 +155,9 @@ namespace VisionFlow_Web_API.Repository
             return returnId;
         }
 
-        public async Task<List<DTO_UserProfile>> GetUserList()
+        public async Task<List<DTO_UserDetails>> GetUserList()
         {
-            var users = new List<DTO_UserProfile>();
+            var users = new List<DTO_UserDetails>();
             using (var conn = new NpgsqlConnection(_Configuration.GetConnectionString("PostgresDb")))
             {
                 await conn.OpenAsync();
@@ -168,7 +168,7 @@ namespace VisionFlow_Web_API.Repository
                     {
                         while (await reader.ReadAsync())
                         {
-                            users.Add(new DTO_UserProfile
+                            users.Add(new DTO_UserDetails
                             {
                                 UserId = reader.GetInt32(reader.GetOrdinal("user_id")),
                                 LoginName = reader.GetString(reader.GetOrdinal("login_name")),

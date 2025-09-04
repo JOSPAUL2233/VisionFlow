@@ -135,7 +135,7 @@
     "Parameters": [
       {
         "Name": "userDto",
-        "Type": "VisionFlow_Web_API.Models.DTO_UserRegister",
+        "Type": "VisionFlow_Web_API.Models.DTO_UserDetails",
         "IsRequired": true
       }
     ],
@@ -151,7 +151,7 @@
     "Parameters": [
       {
         "Name": "userDto",
-        "Type": "VisionFlow_Web_API.Models.DTO_UserRegister",
+        "Type": "VisionFlow_Web_API.Models.DTO_UserDetails",
         "IsRequired": true
       }
     ],

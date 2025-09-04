@@ -1,6 +1,6 @@
 ﻿namespace VisionFlow_Web_API.Models
 {
-    public class DTO_UserProfile
+    public class DTO_UserDetails
     {
         public int UserId { get; set; }
         public int ProfileId { get; set; }

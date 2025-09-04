@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "react-toastify";
 import ProjectTable from "../../components/ProjectTable";
 import { setField, setCurrProject, resetCurrProject, setOnEdit, initialProject } from "./ProjectSlice";
-import { FolderKanban, UserPlus, Users } from "lucide-react";
+import { Edit3, FolderKanban, UserPlus, Users, X } from "lucide-react";
 import Headline from "../../ui/Headline";
 import InputField from "../../ui/formElements/InputField";
 import FieldLabel from "../../ui/formElements/FieldLabel";
@@ -35,7 +35,6 @@ function ProjectDetails(){
         queryKey : ["projects"],
         queryFn : async () => {
             const res = await projectApi.getProjectList();
-            console.log("res:",res);
             return res.data.data;
         }
     });
@@ -59,7 +58,7 @@ function ProjectDetails(){
         },
     });
 
-    //-----------------------------------DELETE USER-----------------------------------
+    //-----------------------------------DELETE Project-----------------------------------
     const { mutate: deleteProject, isPending: isDeleting } = useMutation({
         mutationFn: async (project) => {
             return await projectApi.deleteProject(project); 
@@ -72,14 +71,27 @@ function ProjectDetails(){
             toast.error("Failed to delete Project ❌");
         },
     });
-
+    //-----------------------------------UPDATE Project-----------------------------------
+    const { mutate: updateProject, isPending: isUpdating } = useMutation({
+        mutationFn: async (projectDetails) => {
+            return await projectApi.updateProject(projectDetails);
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries(["projects"]);
+            handleReset();
+            setIsModalOpen(false);
+            toast.success("Project updated successfully 🎉");
+        },
+        onError: () => {
+            toast.error("Failed to update Project ❌");
+        },
+    });
 
     //-------------------------------------GET STATUS LIST---------------------------------
     const { data: statusList = [] } = useQuery({
         queryKey: ["statusList"],
         queryFn: async () => {
             const res = await commonApi.getProjectStatusList();
-            console.log("get Project Status List:",res);
             return res.data.data;
         },
     });
@@ -90,7 +102,6 @@ function ProjectDetails(){
         queryKey: ["assignedToList"],
         queryFn: async () => {
             const res = await commonApi.getAssignedToList();
-            console.log("getAssignedToList:",res);
             return res.data.data;
         },
     });
@@ -100,6 +111,12 @@ function ProjectDetails(){
             (key) => initialProject[key] !== projectDetails[key]
         );
     }
+
+    const handleEdit = (projectDetails) => {
+        dispatch(setOnEdit(true));
+        dispatch(setCurrProject(projectDetails))
+        setIsModalOpen(true);
+    };
 
     const handleOnClose = () => {
         setIsModalOpen(false);
@@ -135,6 +152,11 @@ function ProjectDetails(){
     if (isDeleting) {
         return (
             <div className="p-12 text-center text-slate-600">Deleting user...</div>
+        );
+    }
+    if (isUpdating) {
+        return (
+            <div className="p-12 text-center text-slate-600">Updating Project...</div>
         );
     }
 
@@ -245,13 +267,10 @@ function ProjectDetails(){
 
                     <div className="flex flex-wrap gap-4">
 
-                        {/* <GreenButton
-                        onClick={onEdit ? () => updateProject(currProject) : () => createProject(currProject)}
-                        > */}
                         <GreenButton
-                        onClick={() => createProject(currProject)}
+                        onClick={onEdit ? () => updateProject(currProject) : () => createProject(currProject)}
                         >
-                        {onEdit ? <Edit3 className="h-4 w-4 mr-2" /> : <UserPlus className="h-4 w-4 mr-2" />}
+                        {onEdit ? <Edit3 className="h-4 w-4 mr-2" /> : <FolderKanban className="h-4 w-4 mr-2" />}
                         {onEdit ? "Update Project" : "Add Project"}
                         </GreenButton>
 
@@ -265,7 +284,7 @@ function ProjectDetails(){
                     {/* </div> */}
 
                 </Modal>
-                <ProjectTable content={"Project"} projectList={projectList} handleEdit={(project)=>{}} handleDelete={deleteProject}/>
+                <ProjectTable content={"Project"} projectList={projectList} handleEdit={handleEdit} handleDelete={deleteProject}/>
 
             </div>
         </div>
