@@ -7,15 +7,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
-// Add services to the container
+// Adding services to the container
 builder.Services.AddScoped<IUserManagementRepository, UserManagementRepository>();
 builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
 builder.Services.AddScoped<ICommonRepository, CommonRepository>();
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 
-
+//Adding Repositories to the container
 builder.Services.AddScoped<IUserManagementService, UserManagementService>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<ICommonService, CommonService>();
+builder.Services.AddScoped<ITaskService, TaskServcie>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
