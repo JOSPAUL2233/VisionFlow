@@ -8,8 +8,10 @@ import InputField from "../../ui/formElements/InputField";
 import TextField from "../../ui/formElements/TextField";
 import DatePicker from "react-datepicker";
 import Select from "../../ui/formElements/Select";
+import GreenButton from "../../ui/GreenButton";
+import GrayButton from "../../ui/GrayButton";
 
-function TaskDetails(statusList,assignedToList){
+function TaskDetails({statusList,assignedToList}){
 
   const {currTask,onEdit} = useSelector((state) => state.task);
 
@@ -40,7 +42,7 @@ function TaskDetails(statusList,assignedToList){
 
 
     return <>
-        `<div className="flex items-center mb-6">
+        <div className="flex items-center mb-6">
             <div className="bg-gradient-to-r from-emerald-500 to-green-600 p-2 rounded-lg mr-3">
             <FolderKanban className="h-5 w-5 text-white" />
             </div>
@@ -98,7 +100,7 @@ function TaskDetails(statusList,assignedToList){
                     <option value={0} disabled>
                     Select status
                     </option>
-                    {statusList.map((status) => (
+                    {statusList?.map((status) => (
                         <option key={status.statusId} value={status.statusId}>
                             {status.statusDesc}
                         </option>
@@ -119,7 +121,7 @@ function TaskDetails(statusList,assignedToList){
                     <option value={0} disabled>
                     Select Individual
                     </option>
-                    {assignedToList.map((AssignedTo) => (
+                    {assignedToList?.map((AssignedTo) => (
                         <option key={AssignedTo.assignedToId} value={AssignedTo.assignedToId}>
                             {AssignedTo.assignedToDesc}
                         </option>
@@ -144,7 +146,7 @@ function TaskDetails(statusList,assignedToList){
                 Cancel
             </GrayButton>
             )}
-        </div>`
+        </div>
         <TaskTable content={"Task"} taskList={TaskList} handleEdit={handleEdit} handleDelete={handleTaskOpen} handleTaskOpen={handleTaskOpen} />
 
     </>

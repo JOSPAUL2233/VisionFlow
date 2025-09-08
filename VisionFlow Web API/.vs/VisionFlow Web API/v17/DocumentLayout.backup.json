@@ -91,8 +91,7 @@
               "ViewState": "AgIAAD4AAAAAAAAAAAAgwEcAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-07T03:36:27.951Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -141,7 +140,7 @@
               "RelativeDocumentMoniker": "VisionFlow Web API\\Repository\\TaskRepository.cs",
               "ToolTip": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Repository\\TaskRepository.cs",
               "RelativeToolTip": "VisionFlow Web API\\Repository\\TaskRepository.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAawCUAAABWAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAawCAAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-07T03:48:37.124Z",
               "IsPinned": true,
@@ -158,8 +157,7 @@
               "ViewState": "AgIAAAQAAAAAAAAAAAAzwAkAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-07T04:09:21.152Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
