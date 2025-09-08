@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VisionFlow_Web_API.Interfaces.IServices;
 using VisionFlow_Web_API.Models;
+using VisionFlow_Web_API.Service;
 
 namespace VisionFlow_Web_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TaskController : Controller
+    public class TaskController : ControllerBase
     {
         public readonly ITaskService _TaskService;
         public TaskController(ITaskService service)
@@ -14,7 +15,7 @@ namespace VisionFlow_Web_API.Controllers
             _TaskService = service;
         }
         //Current User and Role id hardcoded for now in very QUERY
-        [HttpPost("GetProjectList")]
+        [HttpPost("GetTaskListByPid")]
         public async Task<IActionResult> GetTaskListByPid([FromBody]int projectId)
         {
 
@@ -25,7 +26,7 @@ namespace VisionFlow_Web_API.Controllers
                 return Ok(new
                 {
                     success = false,
-                    message = "Could not fetch user details.",
+                    message = "Could not fetch task details.",
                     data = tasks
                 });
             }
@@ -35,7 +36,7 @@ namespace VisionFlow_Web_API.Controllers
                 return Ok(new
                 {
                     success = false,
-                    message = "No Users Found.",
+                    message = "No Tasks Found.",
                     data = tasks
                 });
             }
@@ -47,5 +48,62 @@ namespace VisionFlow_Web_API.Controllers
             });
         }
 
+        [HttpPost("CreateTask")]
+        public async Task<IActionResult> CreateTask([FromBody] DTO_TaskDetails taskDto)
+        {
+            int taskId = await _TaskService.CreateTask(taskDto);
+            if (taskId == 0)
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "Task registration failed."
+                });
+            }
+            return Ok(new
+            {
+                success = true,
+                message = "Task created successfully.",
+                data = new { taskId }
+            });
+        }
+
+        [HttpDelete("DeleteTask")]
+        public async Task<IActionResult> DeleteTask([FromBody] DTO_TaskDetails taskDto)
+        {
+            int taskId = await _TaskService.DeleteTask(taskDto);
+            if (taskId == 0)
+            {
+                return NotFound(new
+                {
+                    success = false,
+                    message = "Delete failed. Task not found."
+                });
+            }
+            return Ok(new
+            {
+                success = true,
+                message = "Task deleted successfully."
+            });
+        }
+
+        [HttpPut("UpdateTask")]
+        public async Task<IActionResult> UpdateTask([FromBody] DTO_TaskDetails taskDto)
+        {
+            int taskId = await _TaskService.UpdateTask(taskDto);
+            if (taskId == 0)
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "Update failed. Task not found."
+                });
+            }
+            return Ok(new
+            {
+                success = true,
+                message = "Task updated successfully."
+            });
+        }
     }
 }

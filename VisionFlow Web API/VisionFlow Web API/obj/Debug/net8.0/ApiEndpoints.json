@@ -100,6 +100,70 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "VisionFlow_Web_API.Controllers.TaskController",
+    "Method": "CreateTask",
+    "RelativePath": "api/Task/CreateTask",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taskDto",
+        "Type": "VisionFlow_Web_API.Models.DTO_TaskDetails",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VisionFlow_Web_API.Controllers.TaskController",
+    "Method": "DeleteTask",
+    "RelativePath": "api/Task/DeleteTask",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taskDto",
+        "Type": "VisionFlow_Web_API.Models.DTO_TaskDetails",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VisionFlow_Web_API.Controllers.TaskController",
+    "Method": "GetTaskListByPid",
+    "RelativePath": "api/Task/GetTaskListByPid",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VisionFlow_Web_API.Controllers.TaskController",
+    "Method": "UpdateTask",
+    "RelativePath": "api/Task/UpdateTask",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taskDto",
+        "Type": "VisionFlow_Web_API.Models.DTO_TaskDetails",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "VisionFlow_Web_API.Controllers.UserManagementController",
     "Method": "DeleteUser",
     "RelativePath": "api/UserManagement/DeleteUser/{id}",

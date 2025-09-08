@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Npgsql;
+using System.Data;
 using VisionFlow_Web_API.Interfaces.IRepositories;
 using VisionFlow_Web_API.Models;
 
@@ -48,6 +49,146 @@ namespace VisionFlow_Web_API.Repository
                 }
             } 
             return tasks;
+        }
+
+        public async Task<int> CreateTask(DTO_TaskDetails taskDto)
+        {
+            int newProjectId = 0;
+
+            try
+            {
+                using (var conn = new NpgsqlConnection(_Configuration.GetConnectionString("PostgresDb")))
+                {
+                    await conn.OpenAsync();
+
+                    using (var cmd = new NpgsqlCommand("CALL sp_create_task(@p_task_name, @p_description, @p_deadline, @p_status, @p_assigned_by, @p_assigned_to,@p_project_id, @p_user_id, @p_role_id, @p_returnid)", conn))
+                    {
+                        cmd.CommandType = CommandType.Text;
+
+                        cmd.Parameters.AddWithValue("p_task_name", taskDto.TaskName);
+                        cmd.Parameters.AddWithValue("p_description", taskDto.Description);
+                        cmd.Parameters.AddWithValue("p_deadline", taskDto.Deadline);
+                        cmd.Parameters.AddWithValue("p_status", taskDto.Status);
+                        cmd.Parameters.AddWithValue("p_assigned_by", taskDto.AssignedBy);
+                        cmd.Parameters.AddWithValue("p_assigned_to", taskDto.AssignedTo);
+                        cmd.Parameters.AddWithValue("p_project_id", taskDto.ProjectId);
+                        cmd.Parameters.AddWithValue("p_user_id", 1);
+                        cmd.Parameters.AddWithValue("p_role_id", 1);
+                        cmd.Parameters.AddWithValue("p_returnid", 0);
+
+                        using (var reader = await cmd.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                newProjectId = reader.GetInt32(0); // first column = return_id
+                            }
+                        }
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                Console.WriteLine($"Database error: {ex.Message}");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected error: {ex.Message}");
+                throw;
+            }
+
+            return newProjectId;
+        }
+        public async Task<int> DeleteTask(DTO_TaskDetails taskDto)
+        {
+            int newTaskId = 0;
+
+            try
+            {
+                using (var conn = new NpgsqlConnection(_Configuration.GetConnectionString("PostgresDb")))
+                {
+                    await conn.OpenAsync();
+
+                    using (var cmd = new NpgsqlCommand("CALL sp_delete_task(@p_task_id, @p_user_id, @p_role_id, @p_returnid)", conn))
+                    {
+                        cmd.CommandType = CommandType.Text;
+
+                        cmd.Parameters.AddWithValue("p_task_id", taskDto.TaskId);
+                        cmd.Parameters.AddWithValue("p_user_id", 1);
+                        cmd.Parameters.AddWithValue("p_role_id", 1);
+                        cmd.Parameters.AddWithValue("p_returnid", 0);
+
+                        using (var reader = await cmd.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                newTaskId = reader.GetInt32(0); // first column = return_id
+                            }
+                        }
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                Console.WriteLine($"Database error: {ex.Message}");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected error: {ex.Message}");
+                throw;
+            }
+
+            return newTaskId;
+        }
+        public async Task<int> UpdateTask(DTO_TaskDetails taskDto)
+        {
+            int newTaskId = 0;
+
+            try
+            {
+                using (var conn = new NpgsqlConnection(_Configuration.GetConnectionString("PostgresDb")))
+                {
+                    await conn.OpenAsync();
+
+                    using (var cmd = new NpgsqlCommand("CALL sp_update_task(@p_task_id,@p_task_name,@p_description,@p_deadline,@p_status,@p_assigned_by,@p_assigned_to,@p_project_id, @p_user_id, @p_role_id, @p_returnid)", conn))
+                    {
+                        cmd.CommandType = CommandType.Text;
+
+                        cmd.Parameters.AddWithValue("p_task_id", taskDto.TaskId);
+                        cmd.Parameters.AddWithValue("p_task_name", taskDto.TaskName);
+                        cmd.Parameters.AddWithValue("p_description", taskDto.Description);
+                        cmd.Parameters.AddWithValue("p_deadline", taskDto.Deadline);
+                        cmd.Parameters.AddWithValue("p_status", taskDto.Status);
+                        cmd.Parameters.AddWithValue("p_assigned_by", taskDto.AssignedBy);
+                        cmd.Parameters.AddWithValue("p_assigned_to", taskDto.AssignedTo);
+                        cmd.Parameters.AddWithValue("p_project_id", taskDto.ProjectId);
+                        cmd.Parameters.AddWithValue("p_user_id", 1);
+                        cmd.Parameters.AddWithValue("p_role_id", 1);
+                        cmd.Parameters.AddWithValue("p_returnid", 0);
+
+                        using (var reader = await cmd.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                newTaskId = reader.GetInt32(0); // first column = return_id
+                            }
+                        }
+                    }
+                }
+            }
+            catch (NpgsqlException ex)
+            {
+                Console.WriteLine($"Database error: {ex.Message}");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected error: {ex.Message}");
+                throw;
+            }
+
+            return newTaskId;
         }
 
     }

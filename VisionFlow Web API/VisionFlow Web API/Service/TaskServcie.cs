@@ -1,6 +1,7 @@
 ﻿using VisionFlow_Web_API.Interfaces.IRepositories;
 using VisionFlow_Web_API.Interfaces.IServices;
 using VisionFlow_Web_API.Models;
+using VisionFlow_Web_API.Repository;
 
 namespace VisionFlow_Web_API.Service
 {
@@ -13,11 +14,22 @@ namespace VisionFlow_Web_API.Service
             _TaskRepository = repo;
         }
 
-        public Task<List<DTO_TaskDetails>> GetTaskListByPid(int projectId)
+        public async Task<List<DTO_TaskDetails>> GetTaskListByPid(int projectId)
         {
-            return _TaskRepository.GetTaskListByPid(projectId);
+            return await _TaskRepository.GetTaskListByPid(projectId);
         }
-
+        public async Task<int> CreateTask(DTO_TaskDetails taskDto)
+        {
+            return await _TaskRepository.CreateTask(taskDto);
+        }
+        public async Task<int> DeleteTask(DTO_TaskDetails taskDto)
+        {
+            return await _TaskRepository.DeleteTask(taskDto);
+        }
+        public async Task<int> UpdateTask(DTO_TaskDetails taskDto)
+        {
+            return await _TaskRepository.UpdateTask(taskDto);
+        }
 
     }
 }

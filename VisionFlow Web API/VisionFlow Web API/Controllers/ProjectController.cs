@@ -50,20 +50,20 @@ namespace VisionFlow_Web_API.Controllers
         [HttpPost("CreateProject")]
         public async Task<IActionResult> CreateProject([FromBody] DTO_ProjectDetails projectDto)
         {
-            int userId = await _ProjectService.CreateProject(projectDto);
-            if (userId == 0)
+            int projectId = await _ProjectService.CreateProject(projectDto);
+            if (projectId == 0)
             {
                 return BadRequest(new
                 {
                     success = false,
-                    message = "User registration failed."
+                    message = "Project registration failed."
                 });
             }
             return Ok(new
             {
                 success = true,
-                message = "User created successfully.",
-                data = new { userId }
+                message = "Project created successfully.",
+                data = new { projectId }
             });
         }
 
@@ -76,13 +76,13 @@ namespace VisionFlow_Web_API.Controllers
                 return NotFound(new
                 {
                     success = false,
-                    message = "Delete failed. User not found."
+                    message = "Delete failed. Project not found."
                 });
             }
             return Ok(new
             {
                 success = true,
-                message = "User deleted successfully."
+                message = "Project deleted successfully."
             });
         }
 
@@ -95,13 +95,13 @@ namespace VisionFlow_Web_API.Controllers
                 return BadRequest(new
                 {
                     success = false,
-                    message = "Update failed. User not found."
+                    message = "Update failed. Project not found."
                 });
             }
             return Ok(new
             {
                 success = true,
-                message = "User updated successfully."
+                message = "Project updated successfully."
             });
         }
 
