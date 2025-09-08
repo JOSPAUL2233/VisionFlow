@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VisionFlow Web API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d7c61fb80d8f130360238ecb6c7f2082dd8f5404")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a640dd0b47b3e357a1ffe8569e68ee24f2e7d9c8")]
 [assembly: System.Reflection.AssemblyProductAttribute("VisionFlow Web API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VisionFlow Web API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

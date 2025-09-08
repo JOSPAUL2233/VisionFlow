@@ -12,10 +12,10 @@
         public string? AssignedByDesc { get; set; }
         public int? AssignedTo { get; set; }
         public string? AssignedToDesc { get; set; }
-        public int? ProjectId { get; set;}
+        public int? ProjectId { get; set; }
         public string? ProjectDesc { get; set; }
         public int? ReturnId { get; set; }
         public int? RoleId { get; set; }
-        public int? userId { get; set; }
+        public int? UserId { get; set; }
     }
 }

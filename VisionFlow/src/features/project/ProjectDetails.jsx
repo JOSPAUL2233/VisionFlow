@@ -7,21 +7,25 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "react-toastify";
 import ProjectTable from "../../components/ProjectTable";
-import { setField, setCurrProject, resetCurrProject, setOnEdit, initialProject } from "./ProjectSlice";
-import { Edit3, FolderKanban, UserPlus, Users, X } from "lucide-react";
+import { setField as setProjectField, setCurrProject, resetCurrProject, setOnEdit as setProjectOnEdit, initialProject } from "./ProjectSlice";
+import { setField as setTaskField, setOnEdit as setTaskOnEdit,setProjectId } from "../task/TaskSlice";
+import { Edit3, FolderKanban, UserPlus, Users, X,Clipboard } from "lucide-react";
 import Headline from "../../ui/Headline";
 import InputField from "../../ui/formElements/InputField";
 import FieldLabel from "../../ui/formElements/FieldLabel";
 import GreenButton from "../../ui/GreenButton";
 import GrayButton from "../../ui/GrayButton";
 import Select from "../../ui/formElements/Select";
-import Modal from "../../components/Modal";
+import ProjectModal from "../../components/ProjectModal";
 import TextField from "../../ui/formElements/TextField";
+import TaskDetails from "../task/TaskDetails";
+import TaskModal from "../../components/TaskModal";
 
 function ProjectDetails(){
   const queryClient = useQueryClient();
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isProjectModalOpen, setisProjectModalOpen] = useState(false);
+  const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 
   //could also be handled locally also
   const {currProject,onEdit} = useSelector((state) => state.project);
@@ -50,7 +54,7 @@ function ProjectDetails(){
         onSuccess: () => {
             queryClient.invalidateQueries(["projects"]);
             handleReset();
-            setIsModalOpen(false);
+            setisProjectModalOpen(false);
             toast.success("projects created successfully 🎉");
         },
         onError: (err) => {
@@ -79,7 +83,7 @@ function ProjectDetails(){
         onSuccess: () => {
             queryClient.invalidateQueries(["projects"]);
             handleReset();
-            setIsModalOpen(false);
+            setisProjectModalOpen(false);
             toast.success("Project updated successfully 🎉");
         },
         onError: () => {
@@ -113,18 +117,23 @@ function ProjectDetails(){
     }
 
     const handleEdit = (projectDetails) => {
-        dispatch(setOnEdit(true));
+        dispatch(setProjectOnEdit(true));
         dispatch(setCurrProject(projectDetails))
-        setIsModalOpen(true);
+        setisProjectModalOpen(true);
     };
 
-    const handleOnClose = () => {
-        setIsModalOpen(false);
+    const handleProjectOnClose = () => {
+        setisProjectModalOpen(false);
         dispatch(resetCurrProject());
     }
     
     const handleReset = () => {
         dispatch(resetCurrProject());
+    };
+
+    const handleTaskOpen = (projectId) => {
+        dispatch(setProjectId(projectId));
+        setIsTaskModalOpen(true);            
     };
 
 //#endregion------------------------------------------------------------------------------------------------------------------------
@@ -167,13 +176,13 @@ function ProjectDetails(){
                 <Headline Icon={<FolderKanban className="h-8 w-8 text-white" />} Headline={"Project Details"} SubHeadline={"Manage your project Details here"}/>
 
                 <div className="mb-6">
-                <GreenButton onClick={() => setIsModalOpen(true)}>
+                <GreenButton onClick={() => setisProjectModalOpen(true)}>
                     <FolderKanban className="h-4 w-4 mr-2" />
                     Create Project
                 </GreenButton>
                 </div>
 
-                <Modal isOpen={isModalOpen} onClose={handleOnClose}>
+                <ProjectModal isOpen={isProjectModalOpen} onClose={handleProjectOnClose}>
                 
                     {/* <div className="bg-white/80 backdrop-blur-sm shadow-xl rounded-2xl p-6 mb-0 border border-white/20"> */}
                     <div className="flex items-center mb-6">
@@ -193,7 +202,7 @@ function ProjectDetails(){
                         <InputField
                             placeholder="Enter Project Name"
                             value={currProject.projectName}
-                            onChange={(e) => dispatch(setField({ name: "projectName", value: e.target.value }))}
+                            onChange={(e) => dispatch(setProjectField({ name: "projectName", value: e.target.value }))}
                         />
                         </div>
 
@@ -204,7 +213,7 @@ function ProjectDetails(){
                         <TextField
                             placeholder="Enter Description"
                             value={currProject.description}
-                            onChange={(e) => dispatch(setField({ name: "description", value: e.target.value }))}
+                            onChange={(e) => dispatch(setProjectField({ name: "description", value: e.target.value }))}
                         />
                         </div>
                         <div className="space-y-2">
@@ -213,7 +222,7 @@ function ProjectDetails(){
                             </FieldLabel>
                             <DatePicker
                                 selected={currProject.deadline ? new Date(currProject.deadline) : null}
-                                onChange={(date) => dispatch(setField({ name: "deadline", value: date.toISOString() })) }
+                                onChange={(date) => dispatch(setProjectField({ name: "deadline", value: date.toISOString() })) }
                                 dateFormat="dd-MM-yyyy"
                                 className="w-full bg-gray-100 rounded-lg border border-slate-300 p-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-slate-800"
                                 placeholderText="Select a Deadline"
@@ -228,7 +237,7 @@ function ProjectDetails(){
                             <Select
                                 value={currProject.status || 0}
                                 onChange={(e) =>
-                                    dispatch(setField({ name: "status", value: Number(e.target.value) }))
+                                    dispatch(setProjectField({ name: "status", value: Number(e.target.value) }))
                                 }
                             >
                                 <option value={0} disabled>
@@ -249,7 +258,7 @@ function ProjectDetails(){
                             <Select
                                 value={currProject.assignedTo || 0}
                                 onChange={(e) =>
-                                    dispatch(setField({ name: "assignedTo", value: Number(e.target.value) }))
+                                    dispatch(setProjectField({ name: "assignedTo", value: Number(e.target.value) }))
                                 }
                             >
                                 <option value={0} disabled>
@@ -267,8 +276,8 @@ function ProjectDetails(){
 
                     <div className="flex flex-wrap gap-4">
 
-                        <GreenButton
-                        onClick={onEdit ? () => updateProject(currProject) : () => createProject(currProject)}
+                        <GreenButton 
+                            onClick={onEdit ? () => updateProject(currProject) : () => createProject(currProject)}
                         >
                         {onEdit ? <Edit3 className="h-4 w-4 mr-2" /> : <FolderKanban className="h-4 w-4 mr-2" />}
                         {onEdit ? "Update Project" : "Add Project"}
@@ -283,8 +292,13 @@ function ProjectDetails(){
                     </div>
                     {/* </div> */}
 
-                </Modal>
-                <ProjectTable content={"Project"} projectList={projectList} handleEdit={handleEdit} handleDelete={deleteProject}/>
+                </ProjectModal>
+
+                <TaskModal isOpen={isTaskModalOpen} onClose={() => setIsTaskModalOpen(false)}>
+                    <TaskDetails statusList={statusList} assignedToList={assignedToList}/>
+                </TaskModal>
+
+                <ProjectTable content={"Project"} projectList={projectList} handleEdit={handleEdit} handleDelete={deleteProject} handleTaskOpen={handleTaskOpen}/>
 
             </div>
         </div>

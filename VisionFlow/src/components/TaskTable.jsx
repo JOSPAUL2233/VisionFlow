@@ -4,17 +4,19 @@ import EditButton from "../ui/EditButton"
 import Col from "../ui/tableElements/Col";
 import Td from "../ui/tableElements/Td";
 import Tr from "../ui/tableElements/Tr";
-import { format } from "date-fns";
+import { format } from "date-fns"; // install: npm install date-fns
 import GreenButton from "../ui/GreenButton";
 
 
-function ProjectTable({content,projectList,handleEdit,handleDelete,handleTaskOpen}){
+function TaskTable({content,taskList,handleEdit,handleDelete}){
+
+//  const {currProject} = useSelector(state=>state.project);
 
     return <> 
 
         <div className="bg-white/80 backdrop-blur-sm shadow-xl rounded-2xl border border-white/20 overflow-hidden">
           
-          {(!projectList || projectList.length === 0) ? (
+          {(!taskList || taskList.length === 0) ? (
 
             <div className="p-12 text-center">
               <div className="bg-slate-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
@@ -34,7 +36,7 @@ function ProjectTable({content,projectList,handleEdit,handleDelete,handleTaskOpe
                   </div>
                   <div>
                     <h2 className="text-2xl font-semibold text-slate-800">{content} List</h2>
-                    <p className="text-slate-600">Total {content}s: {projectList.length}</p>
+                    <p className="text-slate-600">Total {content}s: {taskList.length}</p>
                   </div>
                 </div>
               </div>
@@ -43,7 +45,7 @@ function ProjectTable({content,projectList,handleEdit,handleDelete,handleTaskOpe
                 <thead className="bg-slate-50">
                   <tr>
                     <th className="px-8 py-4 text-left font-semibold text-slate-700 border-b border-slate-200">
-                      Project Name
+                      Task Name
                     </th>
                     <th className="px-8 py-4 text-left font-semibold text-slate-700 border-b border-slate-200">
                       Deadline
@@ -63,43 +65,40 @@ function ProjectTable({content,projectList,handleEdit,handleDelete,handleTaskOpe
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200">
-                  {projectList.map((project) => (
+                  {taskList.map((task) => (
 
-                    <Tr key={project.projectId}>
+                    <Tr key={task.taskId}>
                       <Td>
                         <Col>
-                            {project.projectName}
+                            {task.taskName}
                         </Col>
                       </Td>
                       <Td>
                         <Col>
-                            {project.deadline 
-                              ? format(new Date(project.deadline), "dd-MM-yyyy") 
+                            {task.deadline 
+                              ? format(new Date(task.deadline), "dd-MM-yyyy") 
                               : "No Deadline"}
                         </Col>
                       </Td>
                       <Td>
                         <Col>
-                            {project.statusDesc}
+                            {task.statusDesc}
                         </Col>
                       </Td>
                       <Td>
                         <Col>
-                            {project.assignedToDesc}
+                            {task.assignedToDesc}
                         </Col>
                       </Td>
                       <Td>
                         <Col>
-                            {project.assignedByDesc}
+                            {task.assignedByDesc}
                         </Col>
                       </Td>
                       <Td>
                         <div className="flex justify-center gap-4">
-                            <GreenButton onClick={() => handleTaskOpen(project.projectId)}>
-                                <Clipboard className="h-4 w-4 mr-2"/> Add Task
-                            </GreenButton>
-                          <EditButton onClick={() => handleEdit(project)}/>
-                          <DeleteButton onClick={() => handleDelete(project)}/>
+                          <EditButton onClick={() => handleEdit(task)}/>
+                          <DeleteButton onClick={() => handleDelete(task)}/>
                         </div>
                       </Td>
                     </Tr>
@@ -112,4 +111,4 @@ function ProjectTable({content,projectList,handleEdit,handleDelete,handleTaskOpe
         </div>    
     </>
 }
-export default ProjectTable;
+export default TaskTable;
