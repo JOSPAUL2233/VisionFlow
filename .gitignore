@@ -18,6 +18,11 @@
 [Bb]in/**/*.json
 [Oo]bj/**/*.json
 
+# Ignore all appsettings files
+**/appsettings.json
+**/appsettings.*.json
+
+
 # User-specific files
 *.user
 *.suo
