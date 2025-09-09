@@ -11,8 +11,8 @@ export const initialTask = {
   assignedByDesc: "",
   assignedTo: 0,
   assignedToDesc: "",
-  ProjectId: 0,
-  ProjectDesc: "",
+  projectId: 0,
+  projectDesc: "",
   userId: 0,
   roleId: 0,
   returnId: 0  
@@ -20,15 +20,14 @@ export const initialTask = {
 
 const initialTaskState = {
   currTask: initialTask,
-  onEdit: false,
-  projectId:0
+  onEdit: false
 };
 
 const TaskSlice = createSlice({
   name: "task",
   initialState: initialTaskState,
   reducers: {
-    setTaskField: (state, action) => {
+    setField: (state, action) => {
       const { name, value } = action.payload;
       state.currTask[name] = value;
     },
@@ -36,16 +35,18 @@ const TaskSlice = createSlice({
       state.currTask = action.payload;
     },
     resetCurrTask: (state) => {
+      //---resetting everything keeping the project id same---
+      const pid = state.currTask.projectId;
       state.currTask = { ...initialTask };
+      state.currTask.projectId = pid;
       state.onEdit = false;
-      state.projectId = 0;
     },
     setOnEdit: (state, action) => {
       state.onEdit = action.payload;
-    },
-    setProjectId: (state,action) => {
-        state.projectId = action.payload;
     }
+    // setProjectId: (state,action) => {
+    //     state.projectId = action.payload;
+    // }
   },
 });
 

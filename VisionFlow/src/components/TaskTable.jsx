@@ -14,7 +14,7 @@ function TaskTable({content,taskList,handleEdit,handleDelete}){
 
     return <> 
 
-        <div className="bg-white/80 backdrop-blur-sm shadow-xl rounded-2xl border border-white/20 overflow-hidden">
+        <div className="bg-white/80 backdrop-blur-sm shadow-xl mt-10 rounded-2xl border border-white/20 overflow-hidden">
           
           {(!taskList || taskList.length === 0) ? (
 

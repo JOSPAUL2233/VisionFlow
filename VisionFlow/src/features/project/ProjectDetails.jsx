@@ -8,7 +8,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { toast } from "react-toastify";
 import ProjectTable from "../../components/ProjectTable";
 import { setField as setProjectField, setCurrProject, resetCurrProject, setOnEdit as setProjectOnEdit, initialProject } from "./ProjectSlice";
-import { setField as setTaskField, setOnEdit as setTaskOnEdit,setProjectId } from "../task/TaskSlice";
+import { setField as setTaskField } from "../task/TaskSlice";
+import {setProjectId } from "../task/TaskSlice";
 import { Edit3, FolderKanban, UserPlus, Users, X,Clipboard } from "lucide-react";
 import Headline from "../../ui/Headline";
 import InputField from "../../ui/formElements/InputField";
@@ -129,10 +130,13 @@ function ProjectDetails(){
     
     const handleReset = () => {
         dispatch(resetCurrProject());
+        // dispatch(setTaskField({name:"projectId",value:projectId}));
+        dispatch(setTaskField({name:"projectId",value:1}));
     };
 
     const handleTaskOpen = (projectId) => {
-        dispatch(setProjectId(projectId));
+        // dispatch(setTaskField({name:"projectId",value:projectId}));
+        dispatch(setTaskField({name:"projectId",value:1}));
         setIsTaskModalOpen(true);            
     };
 
