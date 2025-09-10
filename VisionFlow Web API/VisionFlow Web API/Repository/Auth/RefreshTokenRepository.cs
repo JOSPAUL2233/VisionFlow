@@ -39,7 +39,7 @@ namespace VisionFlow_Web_API.Repository.Auth
             {
                 return new RefreshToken
                 {
-                    Id = reader.GetInt32(reader.GetOrdinal("id")),
+                    Id = reader.GetInt32(reader.GetOrdinal("rtid")),
                     UserId = reader.GetInt32(reader.GetOrdinal("user_id")),
                     TokenHash = reader.GetString(reader.GetOrdinal("token_hash")),
                     Expiry = reader.GetDateTime(reader.GetOrdinal("expiry"))

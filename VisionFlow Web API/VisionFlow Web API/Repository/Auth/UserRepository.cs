@@ -44,5 +44,35 @@ namespace VisionFlow_Web_API.Repository.Auth
             return user;
         }
 
+        public async Task<DTO_User?> GetUserByIdAsync(int userId)
+        {
+            DTO_User? user = null;
+
+            using (var conn = new NpgsqlConnection(_Configuration.GetConnectionString("PostgresDb")))
+            {
+                await conn.OpenAsync();
+
+                using (var cmd = new NpgsqlCommand("SELECT * FROM fn_get_user_by_id(@p_user_id)", conn))
+                {
+                    cmd.Parameters.AddWithValue("p_user_id", userId);
+
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        if (await reader.ReadAsync())
+                        {
+                            user = new DTO_User
+                            {
+                                UserId = reader.GetInt32(reader.GetOrdinal("user_id")),
+                                LoginName = reader.GetString(reader.GetOrdinal("login_name")),
+                                RoleName = reader.GetString(reader.GetOrdinal("role_name"))
+                            };
+                        }
+                    }
+                }
+            }
+
+            return user;
+        }
+
     }
 }

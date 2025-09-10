@@ -21,10 +21,10 @@ namespace VisionFlow_Web_API.Service.Auth
             return await _UserRepository.ValidateUserAsync(Username, Password);
         }
 
-        //public async Task<DTO_User> GetUserByIdAsync(int userId)
-        //{
-        //    return await _UserRepository.GetUserByIdAsync(userId);
-        //}
+        public async Task<DTO_User?> GetUserByIdAsync(int userId)
+        {
+            return await _UserRepository.GetUserByIdAsync(userId);
+        }
 
 
     }

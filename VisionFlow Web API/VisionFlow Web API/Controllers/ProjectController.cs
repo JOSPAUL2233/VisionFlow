@@ -23,12 +23,6 @@ namespace VisionFlow_Web_API.Controllers
         public async Task<IActionResult> GetProjectList([FromBody] int userId)
         {
 
-
-            foreach (var claim in User.Claims)
-            {
-                Console.WriteLine($"{claim.Type} = {claim.Value}");
-            }
-
             var uid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
             var loginName = User.Identity?.Name;
 
@@ -36,12 +30,12 @@ namespace VisionFlow_Web_API.Controllers
 
             if (projects == null)
             {
-                return Ok(new { success = false, message = "Could not fetch user details.", data = projects });
+                return Ok(new { success = false, message = "Could not fetch project details.", data = projects });
             }
 
             if (!projects.Any())
             {
-                return Ok(new { success = false, message = "No Users Found.", data = projects });
+                return Ok(new { success = false, message = "No Projects Found.", data = projects });
             }
 
             return Ok(new { success = true, data = projects });

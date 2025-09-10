@@ -114,8 +114,7 @@ namespace VisionFlow_Web_API.Controllers
                 DateTime.UtcNow.AddDays(int.Parse(_config["Jwt:RefreshTokenExpiryDays"]))
             );
 
-            //var userDto = await _userService.GetUserByIdAsync(stored.UserId); //TO BE ADDED
-            var userDto = await _userService.ValidateUserAsync("A",""); //TO BE REMOVED
+            var userDto = await _userService.GetUserByIdAsync(stored.UserId);
             var newAccess = _tokenService.CreateAccessToken(userDto);
 
             // reset cookies
@@ -148,7 +147,7 @@ namespace VisionFlow_Web_API.Controllers
         [Authorize]
         public async Task<IActionResult> Logout()
         {
-            var userId = int.Parse(User.FindFirstValue(JwtRegisteredClaimNames.Sub));
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
             await _refreshRepo.DeleteAllForUserAsync(userId);
 
             Response.Cookies.Delete("access_token");
@@ -158,7 +157,7 @@ namespace VisionFlow_Web_API.Controllers
             return Ok(new { success = true });
         }
 
-        // ------------------------- HELPERS -------------------------
+        // ------------------------- HELPERS FUNCTIONS -------------------------
         private static string Hash(string input)
         {
             using var sha = SHA256.Create();
