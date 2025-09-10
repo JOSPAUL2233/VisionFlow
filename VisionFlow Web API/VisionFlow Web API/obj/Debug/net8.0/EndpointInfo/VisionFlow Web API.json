@@ -5,6 +5,61 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/Auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DTO_Login"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DTO_Login"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DTO_Login"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/refresh": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/logout": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Common/GetRoles": {
       "get": {
         "tags": [
@@ -428,6 +483,20 @@
         },
         "additionalProperties": false
       },
+      "DTO_Login": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "DTO_ProjectDetails": {
         "type": "object",
         "properties": {
@@ -620,6 +689,19 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "cookieAuth": {
+        "type": "apiKey",
+        "description": "JWT Access Token stored in Cookie named 'access_token'",
+        "name": "access_token",
+        "in": "cookie"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "cookieAuth": [ ]
+    }
+  ]
 }

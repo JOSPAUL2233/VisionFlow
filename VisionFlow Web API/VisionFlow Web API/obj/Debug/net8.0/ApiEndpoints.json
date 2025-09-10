@@ -1,5 +1,41 @@
 [
   {
+    "ContainingType": "VisionFlow_Web_API.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "logInDto",
+        "Type": "VisionFlow_Web_API.Models.Auth.DTO_Login",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VisionFlow_Web_API.Controllers.AuthController",
+    "Method": "Logout",
+    "RelativePath": "api/Auth/logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VisionFlow_Web_API.Controllers.AuthController",
+    "Method": "Refresh",
+    "RelativePath": "api/Auth/refresh",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "VisionFlow_Web_API.Controllers.CommonController",
     "Method": "GetAssignedToList",
     "RelativePath": "api/Common/GetAssignedToList",

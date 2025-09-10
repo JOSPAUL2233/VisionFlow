@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using VisionFlow_Web_API.Interfaces.IServices;
 using VisionFlow_Web_API.Models;
 
@@ -15,37 +18,35 @@ namespace VisionFlow_Web_API.Controllers
             _ProjectService = service;
         }
 
+        [Authorize]
         [HttpPost("GetProjectList")]
         public async Task<IActionResult> GetProjectList([FromBody] int userId)
         {
+
+
+            foreach (var claim in User.Claims)
+            {
+                Console.WriteLine($"{claim.Type} = {claim.Value}");
+            }
+
+            var uid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+            var loginName = User.Identity?.Name;
+
             var projects = await _ProjectService.GetProjectList(userId);
 
             if (projects == null)
             {
-                return Ok(new
-                {
-                    success = false,
-                    message = "Could not fetch user details.",
-                    data = projects
-                });
+                return Ok(new { success = false, message = "Could not fetch user details.", data = projects });
             }
 
             if (!projects.Any())
             {
-                return Ok(new
-                {
-                    success = false,
-                    message = "No Users Found.",
-                    data = projects
-                });
+                return Ok(new { success = false, message = "No Users Found.", data = projects });
             }
 
-            return Ok(new
-            {
-                success = true,
-                data = projects
-            });
+            return Ok(new { success = true, data = projects });
         }
+
 
         [HttpPost("CreateProject")]
         public async Task<IActionResult> CreateProject([FromBody] DTO_ProjectDetails projectDto)

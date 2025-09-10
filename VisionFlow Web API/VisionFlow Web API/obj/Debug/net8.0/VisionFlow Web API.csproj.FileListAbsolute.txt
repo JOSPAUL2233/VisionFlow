@@ -69,7 +69,6 @@ D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\st
 D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.VisionFlow Web API.props
 D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.VisionFlow Web API.props
 D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets.pack.json
-D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFl.5A254F06.Up2Date
 D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.dll
 D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\refint\VisionFlow Web API.dll
@@ -77,3 +76,12 @@ D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\Vi
 D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.genruntimeconfig.cache
 D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\ref\VisionFlow Web API.dll
 D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\VisionFlow Web API.sourcelink.json
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Projects\VisionFlow\VisionFlow Web API\VisionFlow Web API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
