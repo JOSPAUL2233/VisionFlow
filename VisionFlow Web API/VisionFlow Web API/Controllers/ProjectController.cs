@@ -18,13 +18,13 @@ namespace VisionFlow_Web_API.Controllers
             _ProjectService = service;
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPost("GetProjectList")]
         public async Task<IActionResult> GetProjectList([FromBody] int userId)
         {
 
-            var uid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
-            var loginName = User.Identity?.Name;
+            //var uid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+            //var loginName = User.Identity?.Name;
 
             var projects = await _ProjectService.GetProjectList(userId);
 

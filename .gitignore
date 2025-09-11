@@ -98,3 +98,26 @@ obj/
 
 # Logs
 *.log
+
+# Visual Studio
+.vs/
+
+# Build artifacts
+bin/
+obj/
+
+# Logs
+*.log
+
+# Cache
+*.cache
+
+# Secrets (optional, if you don’t want appsettings in git)
+appsettings*.json
+
+# Node dependencies (React frontend)
+node_modules/
+
+# Build artifacts (React frontend)
+dist/
+build/

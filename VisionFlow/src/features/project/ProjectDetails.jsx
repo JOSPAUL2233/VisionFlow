@@ -111,17 +111,19 @@ function ProjectDetails(){
         },
     });
 
-    const validateProject = (projectDetails) => {
-        return Object.keys(initialProject).some(
-            (key) => initialProject[key] !== projectDetails[key]
-        );
-    }
-
     const handleEdit = (projectDetails) => {
         dispatch(setProjectOnEdit(true));
         dispatch(setCurrProject(projectDetails))
         setisProjectModalOpen(true);
     };
+
+//#endregion------------------------------------------------------------------------------------------------------------------------
+
+    const validateProject = (projectDetails) => {
+        return Object.keys(initialProject).some(
+            (key) => initialProject[key] !== projectDetails[key]
+        );
+    }
 
     const handleProjectOnClose = () => {
         setisProjectModalOpen(false);
@@ -140,7 +142,6 @@ function ProjectDetails(){
         setIsTaskModalOpen(true);            
     };
 
-//#endregion------------------------------------------------------------------------------------------------------------------------
 
     if (isLoading) {
         return (
@@ -180,10 +181,10 @@ function ProjectDetails(){
                 <Headline Icon={<FolderKanban className="h-8 w-8 text-white" />} Headline={"Project Details"} SubHeadline={"Manage your project Details here"}/>
 
                 <div className="mb-6">
-                <GreenButton onClick={() => setisProjectModalOpen(true)}>
-                    <FolderKanban className="h-4 w-4 mr-2" />
-                    Create Project
-                </GreenButton>
+                    <GreenButton onClick={() => setisProjectModalOpen(true)}>
+                        <FolderKanban className="h-4 w-4 mr-2" />
+                        Create Project
+                    </GreenButton>
                 </div>
 
                 <ProjectModal isOpen={isProjectModalOpen} onClose={handleProjectOnClose}>
