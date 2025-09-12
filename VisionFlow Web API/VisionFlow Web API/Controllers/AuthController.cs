@@ -94,6 +94,23 @@ namespace VisionFlow_Web_API.Controllers
             );
         }
 
+        // ------------------------- Identify Me -------------------------
+        [HttpGet("me")]
+        public IActionResult Me()
+        {
+            var uid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+            var loginName = User.FindFirst(ClaimTypes.Name)?.Value;
+            var role = User.FindFirst(ClaimTypes.Role)?.Value;
+
+            return Ok(
+            new
+            {
+                UserId = uid,
+                LoginName = loginName,
+                RoleName = role,
+            });
+        }
+
         // ------------------------- REFRESH -------------------------
         [HttpPost("refresh")]
         public async Task<IActionResult> Refresh()
