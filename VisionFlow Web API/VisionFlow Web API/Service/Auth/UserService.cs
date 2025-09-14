@@ -1,8 +1,10 @@
 ﻿using VisionFlow_Web_API.Interfaces.IRepositories;
 using VisionFlow_Web_API.Interfaces.IRepositories.Auth;
 using VisionFlow_Web_API.Interfaces.IServices.Auth;
+using VisionFlow_Web_API.Models;
 using VisionFlow_Web_API.Models.Auth;
 using VisionFlow_Web_API.Repository;
+using DTO_User = VisionFlow_Web_API.Models.Auth.DTO_User;
 
 namespace VisionFlow_Web_API.Service.Auth
 {
@@ -25,7 +27,6 @@ namespace VisionFlow_Web_API.Service.Auth
         {
             return await _UserRepository.GetUserByIdAsync(userId);
         }
-
 
     }
 }

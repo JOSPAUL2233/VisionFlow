@@ -36,6 +36,18 @@
         }
       }
     },
+    "/api/Auth/me": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Auth/refresh": {
       "post": {
         "tags": [
@@ -72,6 +84,37 @@
         }
       }
     },
+    "/api/Common/GetNavbarList": {
+      "get": {
+        "tags": [
+          "Common"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DTO_User"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DTO_User"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DTO_User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Common/GetProjectStatusList": {
       "get": {
         "tags": [
@@ -93,17 +136,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DTO_GetAssignedToPARA"
+                "$ref": "#/components/schemas/DTO_User"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/DTO_GetAssignedToPARA"
+                "$ref": "#/components/schemas/DTO_User"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/DTO_GetAssignedToPARA"
+                "$ref": "#/components/schemas/DTO_User"
               }
             }
           }
@@ -469,20 +512,6 @@
   },
   "components": {
     "schemas": {
-      "DTO_GetAssignedToPARA": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "roleId": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
       "DTO_Login": {
         "type": "object",
         "properties": {
@@ -633,6 +662,20 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DTO_User": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "roleId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

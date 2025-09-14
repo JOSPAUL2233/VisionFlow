@@ -62,6 +62,8 @@ namespace VisionFlow_Web_API.Repository
             }
             return projects;
         }
+
+
         public async Task<List<DTO_AssignedToDetails>> GetAssignedToList(int userId, int roleId)
         {
             var list = new List<DTO_AssignedToDetails>();
@@ -81,6 +83,35 @@ namespace VisionFlow_Web_API.Repository
                             {
                                 AssignedToId = reader.GetInt32(reader.GetOrdinal("assigned_to_id")),
                                 AssignedToDesc = reader.GetString(reader.GetOrdinal("assigned_to_desc"))
+                            });
+                        }
+                    }
+                }
+            }
+            return list;
+        }
+
+        public async Task<List<DTO_NavbarDetails>> GetNavbarList(int userId, int? roleId)
+        {
+            var list = new List<DTO_NavbarDetails>();
+            using (var conn = new NpgsqlConnection(_Configuration.GetConnectionString("PostgresDb")))
+            {
+                await conn.OpenAsync();
+
+                using (var cmd = new NpgsqlCommand("SELECT * FROM fn_get_navbar_list(@p_user_id,@p_role_id)", conn))
+                {
+                    cmd.Parameters.AddWithValue("p_user_id", userId);
+                    cmd.Parameters.AddWithValue("p_role_id", roleId);
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            list.Add(new DTO_NavbarDetails
+                            {
+                                Name = reader.GetString(reader.GetOrdinal("name")),
+                                Path = reader.GetString(reader.GetOrdinal("path")),
+                                Icon = reader.GetString(reader.GetOrdinal("icon")),
+                                Order = reader.GetInt32(reader.GetOrdinal("nav_order"))
                             });
                         }
                     }

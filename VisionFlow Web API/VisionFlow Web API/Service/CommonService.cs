@@ -24,6 +24,10 @@ namespace VisionFlow_Web_API.Service
         {
             return await _CommonRepository.GetAssignedToList(userId, roleId);
         }
+        public async Task<List<DTO_NavbarDetails>> GetNavbarList(int userId,int? roleId)
+        {
+            return await _CommonRepository.GetNavbarList(userId, roleId);
+        }
 
     }
 }

@@ -1,16 +1,6 @@
 [
   {
     "ContainingType": "VisionFlow_Web_API.Controllers.AuthController",
-    "Method": "Me",
-    "RelativePath": "api/Auth",
-    "HttpMethod": "",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "VisionFlow_Web_API.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/Auth/login",
     "HttpMethod": "POST",
@@ -37,6 +27,16 @@
   },
   {
     "ContainingType": "VisionFlow_Web_API.Controllers.AuthController",
+    "Method": "Me",
+    "RelativePath": "api/Auth/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VisionFlow_Web_API.Controllers.AuthController",
     "Method": "Refresh",
     "RelativePath": "api/Auth/refresh",
     "HttpMethod": "POST",
@@ -54,8 +54,24 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "para",
-        "Type": "VisionFlow_Web_API.Models.DTO_GetAssignedToPARA",
+        "Name": "user",
+        "Type": "VisionFlow_Web_API.Models.DTO_User",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VisionFlow_Web_API.Controllers.CommonController",
+    "Method": "GetNavbarList",
+    "RelativePath": "api/Common/GetNavbarList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "VisionFlow_Web_API.Models.DTO_User",
         "IsRequired": true
       }
     ],

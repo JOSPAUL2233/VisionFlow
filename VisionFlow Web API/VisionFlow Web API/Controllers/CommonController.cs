@@ -47,6 +47,40 @@ namespace VisionFlow_Web_API.Controllers
                 data = roles
             });
         }
+        [HttpPost("GetNavbarList")]
+        public async Task<IActionResult> GetNavbarList([FromBody] DTO_User user)
+        {
+
+            var navDetails = await _CommonService.GetNavbarList(user.userId, user.roleId);
+
+            if (navDetails == null)
+            {
+                return Ok(new
+                {
+                    success = false,
+                    message = "Could not fetch Navbar details.",
+                    data = navDetails
+                });
+            }
+
+            if (!navDetails.Any())
+            {
+                return Ok(new
+                {
+                    success = false,
+                    message = "No Navbar List Found.",
+                    data = navDetails
+                });
+            }
+
+            return Ok(new
+            {
+                success = true,
+                data = navDetails
+            });
+        }
+
+
         [HttpGet("GetProjectStatusList")]
         public async Task<IActionResult> GetProjectStatusList()
         {
@@ -80,9 +114,10 @@ namespace VisionFlow_Web_API.Controllers
         }
 
         [HttpPost("GetAssignedToList")]
-        public async Task<IActionResult> GetAssignedToList([FromBody] DTO_GetAssignedToPARA para)
+        public async Task<IActionResult> GetAssignedToList([FromBody] DTO_User user)
         {
-            var assignedToList = await _CommonService.GetAssignedToList(para.userId, para.roleId);
+            var assignedToList = await _CommonService.GetAssignedToList(user.userId, user.roleId);
+
 
             if (assignedToList == null)
             {
