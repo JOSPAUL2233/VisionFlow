@@ -1,6 +1,6 @@
 import "react-toastify/dist/ReactToastify.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import { setUser, clearUser } from "./features/auth/authSlice";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -11,18 +11,25 @@ import UserManagementHome from "./pages/UserManagementHome";
 import ProjectHome from "./pages/ProjectHome";
 import LoginPage from "./pages/LoginPage";
 import AuthCheck from "./components/AuthCheck";
+import { setNavItems } from "./features/navbar/NavbarSlice";
 import { useEffect, useState } from "react";
+import Layout from "./components/shared/Layout";
+import commonApi from "./api/commonApi";
+import DashboardDetails from "./features/dashboard/DashboardDetails";
+import TaskHome from "./pages/TaskHome";
 
 const queryClient = new QueryClient();
 
 function App() {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true); 
+  const { user } = useSelector((state) => state.auth);
 
+  //---FETCH USER DETAILS---
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await authApi.me(); // GET /auth/me
+        const res = await authApi.me();
         if (res.data) {
           dispatch(setUser(res.data));
         }
@@ -36,8 +43,23 @@ function App() {
     fetchUser();
   }, []); 
 
+  //---FETCH NAVBAR ITEMS---
+  useEffect(() => {
+    if (user) {
+      const fetchNavbar = async () => {
+        try {
+          const res = await commonApi.getNavbarList({ userId: user.userId, roleId: user.roleId });
+          dispatch(setNavItems(res.data.data));
+        } catch (err) {
+          console.error("Failed to fetch navbar", err);
+        }
+      };
+      fetchNavbar();
+    }
+  }, [user]);
+
   if (loading) {
-    return <div>Loading...</div>; // spinner/splash screen
+    return <div>Loading...</div>;
   }
 
   return (
@@ -61,7 +83,9 @@ function App() {
               path="/users"
               element={
                 <AuthCheck>
-                  <UserManagementHome />
+                  <Layout>
+                    <UserManagementHome />
+                  </Layout>
                 </AuthCheck>
               }
             />
@@ -69,7 +93,29 @@ function App() {
               path="/projects"
               element={
                 <AuthCheck>
-                  <ProjectHome />
+                  <Layout>
+                    <ProjectHome />
+                  </Layout>
+                </AuthCheck>
+              }
+            />
+            <Route
+              path="/dashboard"
+              element={
+                <AuthCheck>
+                  <Layout>
+                    <DashboardDetails />
+                  </Layout>
+                </AuthCheck>
+              }
+            />
+            <Route
+              path="/tasks"
+              element={
+                <AuthCheck>
+                  <Layout>
+                    <TaskHome />
+                  </Layout>
                 </AuthCheck>
               }
             />

@@ -35,7 +35,8 @@ namespace VisionFlow_Web_API.Repository.Auth
                             {
                                 UserId = reader.GetInt32(reader.GetOrdinal("user_id")),
                                 LoginName = reader.GetString(reader.GetOrdinal("login_name")),
-                                RoleName = reader.GetString(reader.GetOrdinal("role_name"))
+                                RoleName = reader.GetString(reader.GetOrdinal("role_name")),
+                                RoleId = reader.GetInt32(reader.GetOrdinal("role_id"))
                             };
                         }
                     }
@@ -65,7 +66,8 @@ namespace VisionFlow_Web_API.Repository.Auth
                             {
                                 UserId = reader.GetInt32(reader.GetOrdinal("user_id")),
                                 LoginName = reader.GetString(reader.GetOrdinal("login_name")),
-                                RoleName = reader.GetString(reader.GetOrdinal("role_name"))
+                                RoleName = reader.GetString(reader.GetOrdinal("role_name")),
+                                RoleId = reader.GetInt32(reader.GetOrdinal("role_id"))
                             };
                         }
                     }

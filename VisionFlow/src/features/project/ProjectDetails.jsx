@@ -19,7 +19,7 @@ import GrayButton from "../../ui/GrayButton";
 import Select from "../../ui/formElements/Select";
 import ProjectModal from "../../components/ProjectModal";
 import TextField from "../../ui/formElements/TextField";
-import TaskDetails from "../task/TaskDetails";
+import ModalTaskDetails from "../task/ModalTaskDetails";
 import TaskModal from "../../components/TaskModal";
 
 function ProjectDetails(){
@@ -300,7 +300,7 @@ function ProjectDetails(){
                 </ProjectModal>
 
                 <TaskModal isOpen={isTaskModalOpen} onClose={() => setIsTaskModalOpen(false)}>
-                    <TaskDetails statusList={statusList} assignedToList={assignedToList}/>
+                    <ModalTaskDetails statusList={statusList} assignedToList={assignedToList}/>
                 </TaskModal>
 
                 <ProjectTable content={"Project"} projectList={projectList} handleEdit={handleEdit} handleDelete={deleteProject} handleTaskOpen={handleTaskOpen}/>

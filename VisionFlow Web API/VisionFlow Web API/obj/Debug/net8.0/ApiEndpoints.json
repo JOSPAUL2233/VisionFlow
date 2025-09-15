@@ -65,7 +65,7 @@
     "ContainingType": "VisionFlow_Web_API.Controllers.CommonController",
     "Method": "GetNavbarList",
     "RelativePath": "api/Common/GetNavbarList",
-    "HttpMethod": "GET",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [

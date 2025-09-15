@@ -85,7 +85,7 @@
       }
     },
     "/api/Common/GetNavbarList": {
-      "get": {
+      "post": {
         "tags": [
           "Common"
         ],

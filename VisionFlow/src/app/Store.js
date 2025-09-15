@@ -3,6 +3,7 @@ import UserReducer from "../features/users/UserSlice"
 import ProjectReducer from "../features/project/ProjectSlice"
 import TaskReducer from "../features/task/TaskSlice"
 import AuthReducer from "../features/auth/authSlice"
+import NavbarReducer from "../features/navbar/NavbarSlice"
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     user: UserReducer,
     project: ProjectReducer,
     task: TaskReducer,
+    navbar: NavbarReducer,
   },
 });
 

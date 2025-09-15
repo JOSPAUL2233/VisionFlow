@@ -27,7 +27,8 @@ namespace VisionFlow_Web_API.Service
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserId.ToString()),
                 new Claim(ClaimTypes.Name, user.LoginName ?? ""),
-                new Claim(ClaimTypes.Role, user.RoleName ?? "User")
+                new Claim(ClaimTypes.Role, user.RoleName ?? "User"),  // role name
+                new Claim("RoleId", user.RoleId.ToString())           // custom claim for role ID
             };
 
             //--GENERATING TOEKN--

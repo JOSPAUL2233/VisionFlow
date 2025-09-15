@@ -9,10 +9,12 @@ const commonApi = {
   },  
   getAssignedToList: () => {
     return axiosClient.post("/Common/GetAssignedToList",{
-    "userId": 1,
-    "roleId": 2
-  }
-)
+      "userId": 1,
+      "roleId": 2
+    })
+  },
+  getNavbarList : (user) => {
+    return axiosClient.post("/Common/GetNavbarList",user)
   }
 };
 

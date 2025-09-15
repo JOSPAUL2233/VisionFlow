@@ -88,6 +88,7 @@ namespace VisionFlow_Web_API.Controllers
                     user = new { 
                         user.UserId, 
                         user.LoginName, 
+                        user.RoleId,
                         user.RoleName ,
                     } 
                 }
@@ -101,12 +102,15 @@ namespace VisionFlow_Web_API.Controllers
             var uid = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
             var loginName = User.FindFirst(ClaimTypes.Name)?.Value;
             var role = User.FindFirst(ClaimTypes.Role)?.Value;
+            var roleid = User.FindFirst("RoleId")?.Value;
+            var roleIdInt = int.TryParse(roleid, out var rId) ? rId : 0;
 
             return Ok(
             new
             {
                 UserId = uid,
                 LoginName = loginName,
+                RoleId = roleIdInt,
                 RoleName = role,
             });
         }
