@@ -96,7 +96,7 @@ function ProjectTable({content,projectList,handleEdit,handleDelete,handleTaskOpe
                       <Td>
                         <div className="flex justify-center gap-4">
                             <GreenButton onClick={() => handleTaskOpen(project.projectId)}>
-                                <Clipboard className="h-4 w-4 mr-2"/> Add Task
+                                <Clipboard className="h-4 w-4 mr-2"/> Tasks
                             </GreenButton>
                           <EditButton onClick={() => handleEdit(project)}/>
                           <DeleteButton onClick={() => handleDelete(project)}/>

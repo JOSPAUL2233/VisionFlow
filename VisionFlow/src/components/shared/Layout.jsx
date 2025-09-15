@@ -3,9 +3,15 @@ import Navbar from "../../features/navbar/Navbar";
 
 function Layout({ children }) {
   return (
-    <div className="flex min-h-screen">
+    <div className="min-h-screen bg-slate-50">
       <Navbar />
-      <main className="flex-1 p-6 bg-gray-50">{children}</main>
+      <main className="ml-64 overflow-auto">
+        <div className="p-8">
+          <div className="max-w-7xl mx-auto">
+            {children}
+          </div>
+        </div>
+      </main>
     </div>
   );
 }

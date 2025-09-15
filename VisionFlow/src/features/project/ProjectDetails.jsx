@@ -23,23 +23,24 @@ import ModalTaskDetails from "../task/ModalTaskDetails";
 import TaskModal from "../../components/TaskModal";
 
 function ProjectDetails(){
-  const queryClient = useQueryClient();
 
-  const [isProjectModalOpen, setisProjectModalOpen] = useState(false);
-  const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
+    const queryClient = useQueryClient();
 
-  //could also be handled locally also
-  const {currProject,onEdit} = useSelector((state) => state.project);
-  const dispatch = useDispatch();
+    const [isProjectModalOpen, setisProjectModalOpen] = useState(false);
+    const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
+
+    const {currProject,onEdit} = useSelector((state) => state.project);
+    const { user } = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
 
 //#region-------------------------------------------------------API CRUD HANDLING SECTION-----------------------------------------------------
 
     //-----------------------------------GET USER LIST-----------------------------------
 
     const {data:projectList=[],isLoading,error,isError} = useQuery({
-        queryKey : ["projects"],
+        queryKey : ["projects",user.userId],
         queryFn : async () => {
-            const res = await projectApi.getProjectList();
+            const res = await projectApi.getProjectList(user.userId);
             return res.data.data;
         }
     });
@@ -100,8 +101,7 @@ function ProjectDetails(){
             return res.data.data;
         },
     });
-
-
+    
     //-------------------------------------GET STATUS LIST---------------------------------
     const { data: assignedToList = [] } = useQuery({
         queryKey: ["assignedToList"],

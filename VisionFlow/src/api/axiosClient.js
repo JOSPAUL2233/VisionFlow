@@ -1,4 +1,5 @@
 import axios from "axios";
+import authApi from "./authApi";
 
 const axiosClient = axios.create({
   baseURL: "https://localhost:7162/api",
@@ -13,6 +14,8 @@ axiosClient.interceptors.response.use(
   (response) => response,
   
   async (error) => {
+
+    console.log("inside interseptor!");
 
     if (error.response?.status === 401) {
 
