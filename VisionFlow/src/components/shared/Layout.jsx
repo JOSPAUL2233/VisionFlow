@@ -6,7 +6,7 @@ function Layout({ children }) {
     <div className="min-h-screen bg-slate-50">
       <Navbar />
       <main className="ml-64 overflow-auto">
-        <div className="p-8">
+        <div className="">
           <div className="max-w-7xl mx-auto">
             {children}
           </div>

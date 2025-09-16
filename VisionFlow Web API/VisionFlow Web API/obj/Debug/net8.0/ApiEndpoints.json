@@ -199,6 +199,16 @@
   },
   {
     "ContainingType": "VisionFlow_Web_API.Controllers.TaskController",
+    "Method": "GetTaskListByUid",
+    "RelativePath": "api/Task/GetTaskListByUid",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VisionFlow_Web_API.Controllers.TaskController",
     "Method": "UpdateTask",
     "RelativePath": "api/Task/UpdateTask",
     "HttpMethod": "PUT",

@@ -60,7 +60,7 @@ namespace VisionFlow_Web_API.Repository
                 {
                     await conn.OpenAsync();
 
-                    using (var cmd = new NpgsqlCommand("CALL sp_create_project(@p_project_name, @p_description, @p_deadline, @p_status, @p_assigned_by, @p_assigned_to, @p_user_id, @p_role_id, @p_returnid)", conn))
+                    using (var cmd = new NpgsqlCommand("CALL sp_create_project(@p_project_name, @p_description, @p_deadline, @p_status, @p_assigned_to, @p_user_id, @p_role_id, @p_returnid)", conn))
                     {
                         cmd.CommandType = CommandType.Text;
 
@@ -68,7 +68,6 @@ namespace VisionFlow_Web_API.Repository
                         cmd.Parameters.AddWithValue("p_description", projectDto.Description);
                         cmd.Parameters.AddWithValue("p_deadline", projectDto.Deadline);
                         cmd.Parameters.AddWithValue("p_status", projectDto.Status);
-                        cmd.Parameters.AddWithValue("p_assigned_by", projectDto.AssignedBy);
                         cmd.Parameters.AddWithValue("p_assigned_to", projectDto.AssignedTo);
                         cmd.Parameters.AddWithValue("p_user_id", userId);
                         cmd.Parameters.AddWithValue("p_role_id", roleId);

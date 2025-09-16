@@ -278,6 +278,18 @@
         }
       }
     },
+    "/api/Task/GetTaskListByUid": {
+      "post": {
+        "tags": [
+          "Task"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Task/CreateTask": {
       "post": {
         "tags": [

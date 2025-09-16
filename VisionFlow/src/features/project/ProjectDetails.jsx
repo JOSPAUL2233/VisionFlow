@@ -113,7 +113,7 @@ function ProjectDetails(){
 
     const handleEdit = (projectDetails) => {
         dispatch(setProjectOnEdit(true));
-        dispatch(setCurrProject(projectDetails))
+        dispatch(setCurrProject(projectDetails));
         setisProjectModalOpen(true);
     };
 
@@ -175,7 +175,7 @@ function ProjectDetails(){
 
     return <>
         <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-100 to-indigo-50 p-6 md:p-8">  
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-8xl mx-auto">
 
                 <Headline Icon={<FolderKanban className="h-8 w-8 text-white" />} Headline={"Project Details"} SubHeadline={"Manage your project Details here"}/>
                 {(user.roleId == 1 || user.roleId == 2) && //admin and sr.manager

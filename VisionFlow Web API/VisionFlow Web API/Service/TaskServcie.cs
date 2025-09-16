@@ -18,6 +18,11 @@ namespace VisionFlow_Web_API.Service
         {
             return await _TaskRepository.GetTaskListByPid(projectId);
         }
+
+        public async Task<List<DTO_TaskDetails>> GetTaskListByUid(int userId, int roleId)
+        {
+            return await _TaskRepository.GetTaskListByUid(userId,roleId);
+        }
         public async Task<int> CreateTask(DTO_TaskDetails taskDto)
         {
             return await _TaskRepository.CreateTask(taskDto);

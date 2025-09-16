@@ -6,6 +6,7 @@ import LogoutButton from "../../ui/LogoutButton";
 function Navbar() {
 
   const navItems = useSelector((state) => state.navbar.navItems) || [];
+  const {user} = useSelector((state)=>state.auth);
   
   return (
     <nav className="bg-slate-900 text-white w-64 h-screen flex flex-col shadow-xl fixed left-0 top-0 z-50">
@@ -21,7 +22,7 @@ function Navbar() {
             <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               Vision Flow
             </h1>
-            <p className="text-xs text-slate-400">Dashboard</p>
+            <p className="text-xs text-slate-300">{user.loginName} ({user.roleName})</p>
           </div>
         </div>
       </div>

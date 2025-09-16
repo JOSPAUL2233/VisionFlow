@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using VisionFlow_Web_API.Interfaces.IServices;
 using VisionFlow_Web_API.Models;
 using VisionFlow_Web_API.Service;
@@ -20,6 +21,41 @@ namespace VisionFlow_Web_API.Controllers
         {
 
             var tasks = await _TaskService.GetTaskListByPid(projectId);
+
+            if (tasks == null)
+            {
+                return Ok(new
+                {
+                    success = false,
+                    message = "Could not fetch task details.",
+                    data = tasks
+                });
+            }
+
+            if (!tasks.Any())
+            {
+                return Ok(new
+                {
+                    success = false,
+                    message = "No Tasks Found.",
+                    data = tasks
+                });
+            }
+
+            return Ok(new
+            {
+                success = true,
+                data = tasks
+            });
+        }
+
+        [HttpPost("GetTaskListByUid")]
+        public async Task<IActionResult> GetTaskListByUid()
+        {
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+            var roleId = int.TryParse(User.FindFirst("RoleId")?.Value, out var rId) ? rId : 0;
+
+            var tasks = await _TaskService.GetTaskListByUid(userId, roleId);
 
             if (tasks == null)
             {
