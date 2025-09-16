@@ -6,9 +6,12 @@ import Td from "../ui/tableElements/Td";
 import Tr from "../ui/tableElements/Tr";
 import { format } from "date-fns";
 import GreenButton from "../ui/GreenButton";
+import { useSelector } from "react-redux";
 
 
 function ProjectTable({content,projectList,handleEdit,handleDelete,handleTaskOpen}){
+
+  const {user} = useSelector((state)=> state.auth)
 
     return <> 
 
@@ -95,11 +98,20 @@ function ProjectTable({content,projectList,handleEdit,handleDelete,handleTaskOpe
                       </Td>
                       <Td>
                         <div className="flex justify-center gap-4">
-                            <GreenButton onClick={() => handleTaskOpen(project.projectId)}>
-                                <Clipboard className="h-4 w-4 mr-2"/> Tasks
-                            </GreenButton>
-                          <EditButton onClick={() => handleEdit(project)}/>
-                          <DeleteButton onClick={() => handleDelete(project)}/>
+                            
+                            {(user.roleId == 1 || user.roleId == 3)&& //admin and manager
+                              <GreenButton onClick={() => handleTaskOpen(project.projectId)}>
+                                  <Clipboard className="h-4 w-4 mr-2"/> Tasks
+                              </GreenButton>                            
+                            }
+                            
+                        {(user.roleId == 1 || user.roleId == 2) && //admin and sr.manager
+                          <>
+                            <EditButton onClick={() => handleEdit(project)}/>
+                            <DeleteButton onClick={() => handleDelete(project)}/>
+                          </>
+                        }
+                        
                         </div>
                       </Td>
                     </Tr>

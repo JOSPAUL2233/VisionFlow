@@ -12,10 +12,12 @@ import GreenButton from "../../ui/GreenButton";
 import GrayButton from "../../ui/GrayButton";
 import { initialTask, setOnEdit, resetCurrTask, setField, setCurrTask } from "./TaskSlice";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
 
 function ModalTaskDetails({statusList,assignedToList}){
 
   const {currTask,onEdit} = useSelector((state) => state.task);
+  const {} = useSelector((state)=>state.project);
 
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
@@ -25,13 +27,14 @@ function ModalTaskDetails({statusList,assignedToList}){
     //-----------------------------------GET USER LIST-----------------------------------
 
     const {data:TaskList=[],isLoading,error,isError} = useQuery({
-        queryKey : ["tasks"],
+        queryKey : ["tasks",currTask.projectId],
         queryFn : async () => {
-            const res = await taskApi.getTaskListByPid(1);
+            const res = await taskApi.getTaskListByPid(currTask.projectId);
             console.log("taskList res.data:",res.data);
             return res.data.data;
         }
     });
+
 
     //-----------------------------------Create Task-----------------------------------
     const { mutate: createTask, isPending: isCreating } = useMutation({
@@ -103,7 +106,6 @@ function ModalTaskDetails({statusList,assignedToList}){
         );
     }
 
-
     return <>
         <div className="flex items-center mb-6">
             <div className="bg-gradient-to-r from-emerald-500 to-green-600 p-2 rounded-lg mr-3">
@@ -146,7 +148,6 @@ function ModalTaskDetails({statusList,assignedToList}){
                     dateFormat="dd-MM-yyyy"
                     className="w-full bg-gray-100 rounded-lg border border-slate-300 p-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-slate-800"
                     placeholderText="Select a Deadline"
-                    
                 />
             </div>
 

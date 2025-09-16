@@ -13,16 +13,17 @@ namespace VisionFlow_Web_API.Repository
         {
             _Configuration = config;
         }
-        public async Task<List<DTO_ProjectDetails>> GetProjectList(int UserId)
+        public async Task<List<DTO_ProjectDetails>> GetProjectList(int UserId,int roleId)
         {
             var users = new List<DTO_ProjectDetails>();
             using (var conn = new NpgsqlConnection(_Configuration.GetConnectionString("PostgresDb")))
             {
                 await conn.OpenAsync();
 
-                using (var cmd = new NpgsqlCommand("SELECT * FROM fn_get_project_list(@p_user_id)", conn))
+                using (var cmd = new NpgsqlCommand("SELECT * FROM fn_get_project_list(@p_user_id,@p_role_id)", conn))
                 {
                     cmd.Parameters.AddWithValue("p_user_id", UserId);
+                    cmd.Parameters.AddWithValue("p_role_id", roleId);
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
                         while (await reader.ReadAsync())
@@ -49,7 +50,7 @@ namespace VisionFlow_Web_API.Repository
         }
 
 
-        public async Task<int> CreateProject(DTO_ProjectDetails projectDto)
+        public async Task<int> CreateProject(DTO_ProjectDetails projectDto,int userId,int roleId)
         {
             int newProjectId = 0;
 
@@ -69,8 +70,8 @@ namespace VisionFlow_Web_API.Repository
                         cmd.Parameters.AddWithValue("p_status", projectDto.Status);
                         cmd.Parameters.AddWithValue("p_assigned_by", projectDto.AssignedBy);
                         cmd.Parameters.AddWithValue("p_assigned_to", projectDto.AssignedTo);
-                        cmd.Parameters.AddWithValue("p_user_id", 1);
-                        cmd.Parameters.AddWithValue("p_role_id", 1);
+                        cmd.Parameters.AddWithValue("p_user_id", userId);
+                        cmd.Parameters.AddWithValue("p_role_id", roleId);
                         cmd.Parameters.AddWithValue("p_returnid", 0);
 
                         using (var reader = await cmd.ExecuteReaderAsync())

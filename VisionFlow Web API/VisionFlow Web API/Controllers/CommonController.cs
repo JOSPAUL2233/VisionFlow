@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using VisionFlow_Web_API.Interfaces.IServices;
 using VisionFlow_Web_API.Models;
 using VisionFlow_Web_API.Service;
@@ -114,10 +115,12 @@ namespace VisionFlow_Web_API.Controllers
         }
 
         [HttpPost("GetAssignedToList")]
-        public async Task<IActionResult> GetAssignedToList([FromBody] DTO_User user)
+        public async Task<IActionResult> GetAssignedToList()
         {
-            var assignedToList = await _CommonService.GetAssignedToList(user.userId, user.roleId);
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+            var roleId = int.TryParse(User.FindFirst("RoleId")?.Value, out var rId) ? rId : 0;
 
+            var assignedToList = await _CommonService.GetAssignedToList(userId, roleId);
 
             if (assignedToList == null)
             {

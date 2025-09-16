@@ -35,12 +35,12 @@ function ProjectDetails(){
 
 //#region-------------------------------------------------------API CRUD HANDLING SECTION-----------------------------------------------------
 
-    //-----------------------------------GET USER LIST-----------------------------------
+    //-----------------------------------GET PROJECT LIST-----------------------------------
 
     const {data:projectList=[],isLoading,error,isError} = useQuery({
-        queryKey : ["projects",user.userId],
+        queryKey : ["projects"],
         queryFn : async () => {
-            const res = await projectApi.getProjectList(user.userId);
+            const res = await projectApi.getProjectList();
             return res.data.data;
         }
     });
@@ -138,10 +138,9 @@ function ProjectDetails(){
 
     const handleTaskOpen = (projectId) => {
         // dispatch(setTaskField({name:"projectId",value:projectId}));
-        dispatch(setTaskField({name:"projectId",value:1}));
+        dispatch(setTaskField({name:"projectId",value:projectId}));
         setIsTaskModalOpen(true);            
     };
-
 
     if (isLoading) {
         return (
@@ -179,13 +178,14 @@ function ProjectDetails(){
             <div className="max-w-7xl mx-auto">
 
                 <Headline Icon={<FolderKanban className="h-8 w-8 text-white" />} Headline={"Project Details"} SubHeadline={"Manage your project Details here"}/>
-
-                <div className="mb-6">
-                    <GreenButton onClick={() => setisProjectModalOpen(true)}>
-                        <FolderKanban className="h-4 w-4 mr-2" />
-                        Create Project
-                    </GreenButton>
-                </div>
+                {(user.roleId == 1 || user.roleId == 2) && //admin and sr.manager
+                    <div className="mb-6">
+                        <GreenButton onClick={() => setisProjectModalOpen(true)}>
+                            <FolderKanban className="h-4 w-4 mr-2" />
+                            Create Project
+                        </GreenButton>
+                    </div>
+                }
 
                 <ProjectModal isOpen={isProjectModalOpen} onClose={handleProjectOnClose}>
                 

@@ -8,10 +8,7 @@ const commonApi = {
     return axiosClient.get("/Common/GetProjectStatusList")
   },  
   getAssignedToList: () => {
-    return axiosClient.post("/Common/GetAssignedToList",{
-      "userId": 1,
-      "roleId": 2
-    })
+    return axiosClient.post("/Common/GetAssignedToList")
   },
   getNavbarList : (user) => {
     return axiosClient.post("/Common/GetNavbarList",user)

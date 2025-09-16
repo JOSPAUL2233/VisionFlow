@@ -20,10 +20,12 @@ namespace VisionFlow_Web_API.Controllers
 
         [Authorize]
         [HttpPost("GetProjectList")]
-        public async Task<IActionResult> GetProjectList([FromBody] int userId)
+        public async Task<IActionResult> GetProjectList()
         {
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+            var roleId = int.TryParse(User.FindFirst("RoleId")?.Value, out var rId) ? rId : 0;
 
-            var projects = await _ProjectService.GetProjectList(userId);
+            var projects = await _ProjectService.GetProjectList(userId, roleId);
 
             if (projects == null)
             {
@@ -38,11 +40,14 @@ namespace VisionFlow_Web_API.Controllers
             return Ok(new { success = true, data = projects });
         }
 
-
+        [Authorize(Roles = "Admin,Sr. Manager")]
         [HttpPost("CreateProject")]
         public async Task<IActionResult> CreateProject([FromBody] DTO_ProjectDetails projectDto)
         {
-            int projectId = await _ProjectService.CreateProject(projectDto);
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+            var roleId = int.TryParse(User.FindFirst("RoleId")?.Value, out var rId) ? rId : 0;
+
+            int projectId = await _ProjectService.CreateProject(projectDto, userId, roleId);
             if (projectId == 0)
             {
                 return BadRequest(new
@@ -81,6 +86,7 @@ namespace VisionFlow_Web_API.Controllers
         [HttpPut("UpdateProject")]
         public async Task<IActionResult> UpdateProject([FromBody] DTO_ProjectDetails projectDto)
         {
+
             int projectId = await _ProjectService.UpdateProject(projectDto);
             if (projectId == 0)
             {

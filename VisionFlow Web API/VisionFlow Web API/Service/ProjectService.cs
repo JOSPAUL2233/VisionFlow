@@ -13,14 +13,14 @@ namespace VisionFlow_Web_API.Service
         {
             _ProjectRepository = repo;
         }
-        public async Task<List<DTO_ProjectDetails>> GetProjectList(int UserId)
+        public async Task<List<DTO_ProjectDetails>> GetProjectList(int UserId,int roleId)
         {
-            return await _ProjectRepository.GetProjectList(UserId);
+            return await _ProjectRepository.GetProjectList(UserId,roleId);
         }
 
-        public async Task<int> CreateProject(DTO_ProjectDetails projectDto)
+        public async Task<int> CreateProject(DTO_ProjectDetails projectDto,int userId,int roleId)
         {
-            return await _ProjectRepository.CreateProject(projectDto);
+            return await _ProjectRepository.CreateProject(projectDto,userId,roleId);
         }
         public async Task<int> DeleteProject(DTO_ProjectDetails projectDto)
         {
