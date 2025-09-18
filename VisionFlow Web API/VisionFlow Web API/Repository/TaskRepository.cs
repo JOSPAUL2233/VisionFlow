@@ -89,7 +89,7 @@ namespace VisionFlow_Web_API.Repository
             return tasks;
         }
 
-        public async Task<int> CreateTask(DTO_TaskDetails taskDto)
+        public async Task<int> CreateTask(int userId,int roleId,DTO_TaskDetails taskDto)
         {
             int newProjectId = 0;
 
@@ -107,7 +107,7 @@ namespace VisionFlow_Web_API.Repository
                         cmd.Parameters.AddWithValue("p_description", taskDto.Description);
                         cmd.Parameters.AddWithValue("p_deadline", taskDto.Deadline);
                         cmd.Parameters.AddWithValue("p_status", taskDto.Status);
-                        cmd.Parameters.AddWithValue("p_assigned_by", taskDto.AssignedBy);
+                        cmd.Parameters.AddWithValue("p_assigned_by", userId);
                         cmd.Parameters.AddWithValue("p_assigned_to", taskDto.AssignedTo);
                         cmd.Parameters.AddWithValue("p_project_id", taskDto.ProjectId);
                         cmd.Parameters.AddWithValue("p_user_id", 1);

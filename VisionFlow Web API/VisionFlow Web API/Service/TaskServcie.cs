@@ -23,9 +23,9 @@ namespace VisionFlow_Web_API.Service
         {
             return await _TaskRepository.GetTaskListByUid(userId,roleId);
         }
-        public async Task<int> CreateTask(DTO_TaskDetails taskDto)
+        public async Task<int> CreateTask(int userId,int roleId, DTO_TaskDetails taskDto)
         {
-            return await _TaskRepository.CreateTask(taskDto);
+            return await _TaskRepository.CreateTask(userId,roleId,taskDto);
         }
         public async Task<int> DeleteTask(DTO_TaskDetails taskDto)
         {

@@ -2,8 +2,10 @@ import axiosClient from "./axiosClient";
 
 const taskApi = {
   getTaskListByPid: (id) => {
-    console.log("getTaskListByPid called!!!");
     return axiosClient.post("/Task/GetTaskListByPid",id)
+  },
+  getTaskListByUid: () => {
+    return axiosClient.post("/Task/GetTaskListByUid")
   },
   createTask: (task) => {
     return axiosClient.post("/Task/CreateTask", task)

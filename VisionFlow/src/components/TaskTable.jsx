@@ -6,11 +6,13 @@ import Td from "../ui/tableElements/Td";
 import Tr from "../ui/tableElements/Tr";
 import { format } from "date-fns"; // install: npm install date-fns
 import GreenButton from "../ui/GreenButton";
+import { useSelector } from "react-redux";
 
 
 function TaskTable({content,taskList,handleEdit,handleDelete}){
 
 //  const {currProject} = useSelector(state=>state.project);
+    const { user } = useSelector((state) => state.auth);
 
     return <> 
 
@@ -97,8 +99,15 @@ function TaskTable({content,taskList,handleEdit,handleDelete}){
                       </Td>
                       <Td>
                         <div className="flex justify-center gap-4">
-                          <EditButton onClick={() => handleEdit(task)}/>
-                          <DeleteButton onClick={() => handleDelete(task)}/>
+
+                          <GreenButton onClick={() => handleEdit(task)}>
+                              Update Status
+                          </GreenButton>
+
+
+                          {user.userId==3 &&
+                            <DeleteButton onClick={() => handleDelete(task)}/>                          
+                          }
                         </div>
                       </Td>
                     </Tr>

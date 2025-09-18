@@ -211,7 +211,7 @@ function ModalTaskDetails({statusList,assignedToList}){
             </GrayButton>
             )}
         </div>
-        <TaskTable content={"Task"} taskList={TaskList} handleEdit={handleEdit} handleDelete={deleteTask} handleTaskOpen={handleTaskOpen} />
+        <TaskTable content={"Task"} taskList={TaskList} handleEdit={handleEdit} handleDelete={deleteTask} />
 
     </>
 }

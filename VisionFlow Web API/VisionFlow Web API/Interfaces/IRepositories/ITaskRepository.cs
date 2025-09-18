@@ -6,7 +6,7 @@ namespace VisionFlow_Web_API.Interfaces.IRepositories
     {
         Task<List<DTO_TaskDetails>> GetTaskListByPid(int projectId);
         Task<List<DTO_TaskDetails>> GetTaskListByUid(int userid,int roleId);
-        Task<int> CreateTask(DTO_TaskDetails taskDto);
+        Task<int> CreateTask(int userId,int roleId,DTO_TaskDetails taskDto);
         Task<int> DeleteTask(DTO_TaskDetails taskDto);
         Task<int> UpdateTask(DTO_TaskDetails taskDto);
 

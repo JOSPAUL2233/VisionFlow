@@ -87,7 +87,11 @@ namespace VisionFlow_Web_API.Controllers
         [HttpPost("CreateTask")]
         public async Task<IActionResult> CreateTask([FromBody] DTO_TaskDetails taskDto)
         {
-            int taskId = await _TaskService.CreateTask(taskDto);
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+            var roleId = int.TryParse(User.FindFirst("RoleId")?.Value, out var rId) ? rId : 0;
+
+            int taskId = await _TaskService.CreateTask(userId, roleId,taskDto);
+
             if (taskId == 0)
             {
                 return BadRequest(new
