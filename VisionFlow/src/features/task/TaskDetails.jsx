@@ -143,7 +143,7 @@ function TaskDetails(){
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                         
-                        {(user.userId == 1 || user.userId == 3) && 
+                        {(user.roleId == 1 || user.roleId == 3) && //admin,manager
                             <>
                                 <div className="space-y-2 col-span-full">
                                     <FieldLabel>
@@ -203,7 +203,7 @@ function TaskDetails(){
                                 ))}
                             </Select>
                         </div>
-                        {(user.userId == 1 || user.userId == 3) && 
+                        {(user.roleId == 1 || user.roleId == 3) && //admin,manager
                             <div className="space-y-2 col-span-2">
                                 <FieldLabel>
                                     Assigned To

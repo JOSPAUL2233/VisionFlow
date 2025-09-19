@@ -50,6 +50,9 @@ function TaskTable({content,taskList,handleEdit,handleDelete}){
                       Task Name
                     </th>
                     <th className="px-8 py-4 text-left font-semibold text-slate-700 border-b border-slate-200">
+                      Project Name
+                    </th>
+                    <th className="px-8 py-4 text-left font-semibold text-slate-700 border-b border-slate-200">
                       Deadline
                     </th>
                     <th className="px-8 py-4 text-left font-semibold text-slate-700 border-b border-slate-200">
@@ -61,9 +64,12 @@ function TaskTable({content,taskList,handleEdit,handleDelete}){
                     <th className="px-8 py-4 text-left font-semibold text-slate-700 border-b border-slate-200">
                       Assigned By
                     </th>
-                    <th className="px-8 py-4 text-center font-semibold text-slate-700 border-b border-slate-200">
-                      Actions
-                    </th>
+                    {
+                        (user.roleId == 4 || user.roleId == 3) && 
+                        <th className="px-8 py-4 text-center font-semibold text-slate-700 border-b border-slate-200">
+                          Actions
+                        </th>
+                    }
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200">
@@ -73,6 +79,11 @@ function TaskTable({content,taskList,handleEdit,handleDelete}){
                       <Td>
                         <Col>
                             {task.taskName}
+                        </Col>
+                      </Td>
+                      <Td>
+                        <Col>
+                            {task.projectDesc}
                         </Col>
                       </Td>
                       <Td>
@@ -97,19 +108,28 @@ function TaskTable({content,taskList,handleEdit,handleDelete}){
                             {task.assignedByDesc}
                         </Col>
                       </Td>
-                      <Td>
-                        <div className="flex justify-center gap-4">
-
-                          <GreenButton onClick={() => handleEdit(task)}>
-                              Update Status
-                          </GreenButton>
-
-
-                          {user.userId==3 &&
+                      {
+                        user.roleId == 4 && //employee
+                        <Td>
+                          <div className="flex justify-center gap-4">
+                            <GreenButton onClick={() => handleEdit(task)}>
+                                Update Status
+                            </GreenButton>
+                          </div>
+                        </Td>
+                      }
+                      {
+                        user.roleId == 3 && //manager
+                        <Td>
+                          <div className="flex justify-center gap-4">
+                            <GreenButton onClick={() => handleEdit(task)}>
+                            Edit
+                            </GreenButton>
                             <DeleteButton onClick={() => handleDelete(task)}/>                          
-                          }
-                        </div>
-                      </Td>
+                          </div>
+                        </Td>
+                      }
+
                     </Tr>
                   ))}
                 </tbody>

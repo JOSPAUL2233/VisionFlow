@@ -45,7 +45,7 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 1396,
+          "DockedHeight": 1282,
           "SelectedChildIndex": 0,
           "Children": [
             {
@@ -56,7 +56,7 @@
               "RelativeDocumentMoniker": "VisionFlow Web API\\Repository\\CommonRepository.cs",
               "ToolTip": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Repository\\CommonRepository.cs",
               "RelativeToolTip": "VisionFlow Web API\\Repository\\CommonRepository.cs",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAowCYAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAADgAAAAAAAAAAAAgwFIAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-18T09:26:00.729Z",
               "EditorCaption": ""
@@ -71,8 +71,7 @@
               "RelativeToolTip": "VisionFlow Web API\\Repository\\TaskRepository.cs",
               "ViewState": "AgIAAFEAAAAAAAAAAAAQwG4AAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-18T08:55:37.279Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-18T08:55:37.279Z"
             },
             {
               "$type": "Document",
@@ -84,8 +83,7 @@
               "RelativeToolTip": "VisionFlow Web API\\Interfaces\\IRepositories\\ITaskRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-18T08:55:24.981Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-18T08:55:24.981Z"
             },
             {
               "$type": "Document",
@@ -97,8 +95,7 @@
               "RelativeToolTip": "VisionFlow Web API\\Service\\TaskServcie.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAgwBcAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-18T08:54:57.25Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-18T08:54:57.25Z"
             },
             {
               "$type": "Document",
@@ -110,8 +107,7 @@
               "RelativeToolTip": "VisionFlow Web API\\Interfaces\\IServices\\ITaskService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-18T08:54:42.935Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-18T08:54:42.935Z"
             },
             {
               "$type": "Document",
@@ -123,8 +119,7 @@
               "RelativeToolTip": "VisionFlow Web API\\Controllers\\TaskController.cs",
               "ViewState": "AgIAAE0AAAAAAAAAAAAgwF8AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-18T08:49:55.282Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-18T08:49:55.282Z"
             },
             {
               "$type": "Document",
@@ -167,7 +162,7 @@
           ]
         },
         {
-          "DockedHeight": 78,
+          "DockedHeight": 72,
           "SelectedChildIndex": -1,
           "Children": [
             {
