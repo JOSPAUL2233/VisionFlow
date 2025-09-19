@@ -7,6 +7,9 @@ const commonApi = {
   getProjectStatusList: () => {
     return axiosClient.get("/Common/GetProjectStatusList")
   },  
+  getTaskStatusList: () => {
+    return axiosClient.get("/Common/GetTaskStatusList")
+  },  
   getAssignedToList: () => {
     return axiosClient.post("/Common/GetAssignedToList")
   },

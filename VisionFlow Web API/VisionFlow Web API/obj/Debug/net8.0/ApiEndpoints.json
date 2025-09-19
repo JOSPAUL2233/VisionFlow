@@ -92,6 +92,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "VisionFlow_Web_API.Controllers.CommonController",
+    "Method": "GetTaskStatusList",
+    "RelativePath": "api/Common/GetTaskStatusList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "VisionFlow_Web_API.Controllers.ProjectController",
     "Method": "CreateProject",
     "RelativePath": "api/Project/CreateProject",

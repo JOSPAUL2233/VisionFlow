@@ -127,6 +127,18 @@
         }
       }
     },
+    "/api/Common/GetTaskStatusList": {
+      "get": {
+        "tags": [
+          "Common"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Common/GetAssignedToList": {
       "post": {
         "tags": [

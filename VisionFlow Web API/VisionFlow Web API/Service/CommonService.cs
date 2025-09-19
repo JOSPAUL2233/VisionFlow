@@ -16,9 +16,9 @@ namespace VisionFlow_Web_API.Service
         {
             return await _CommonRepository.GetRoles();
         }
-        public async Task<List<DTO_ProjectStatus>> GetProjectStatusList()
+        public async Task<List<DTO_ProjectStatus>> GetStatusList(string mode, int userId, int roleId)
         {
-            return await _CommonRepository.GetProjectStatusList();
+            return await _CommonRepository.GetStatusList(mode,userId,roleId);
         }
         public async Task<List<DTO_AssignedToDetails>> GetAssignedToList(int userId, int roleId)
         {

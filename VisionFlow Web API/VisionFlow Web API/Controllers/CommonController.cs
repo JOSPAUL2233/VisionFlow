@@ -85,7 +85,9 @@ namespace VisionFlow_Web_API.Controllers
         [HttpGet("GetProjectStatusList")]
         public async Task<IActionResult> GetProjectStatusList()
         {
-            var statusList = await _CommonService.GetProjectStatusList();
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+            var roleId = int.TryParse(User.FindFirst("RoleId")?.Value, out var rId) ? rId : 0;
+            var statusList = await _CommonService.GetStatusList("project",userId,roleId);
 
             if (statusList == null)
             {
@@ -93,6 +95,39 @@ namespace VisionFlow_Web_API.Controllers
                 {
                     success = false,
                     message = "Could not project status details.",
+                    data = statusList
+                });
+            }
+
+            if (!statusList.Any())
+            {
+                return Ok(new
+                {
+                    success = false,
+                    message = "No status List Found.",
+                    data = statusList
+                });
+            }
+
+            return Ok(new
+            {
+                success = true,
+                data = statusList
+            });
+        }
+        [HttpGet("GetTaskStatusList")]
+        public async Task<IActionResult> GetTaskStatusList()
+        {
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+            var roleId = int.TryParse(User.FindFirst("RoleId")?.Value, out var rId) ? rId : 0;
+            var statusList = await _CommonService.GetStatusList("task",userId,roleId);
+
+            if (statusList == null)
+            {
+                return Ok(new
+                {
+                    success = false,
+                    message = "Could not find task status details.",
                     data = statusList
                 });
             }

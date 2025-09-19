@@ -92,7 +92,7 @@ function TaskDetails(){
         queryKey: ["statusList"],
         queryFn: async () => {
             console.log("statusList got called");
-            const res = await commonApi.getProjectStatusList();
+            const res = await commonApi.getTaskStatusList();
             console.log("res:",res);
             return res.data.data;
         },

@@ -99,11 +99,16 @@ function ProjectTable({content,projectList,handleEdit,handleDelete,handleTaskOpe
                       <Td>
                         <div className="flex justify-center gap-4">
                             
-                            {(user.roleId == 1 || user.roleId == 3)&& //admin and manager
-                              <GreenButton onClick={() => handleTaskOpen(project.projectId)}>
-                                  <Clipboard className="h-4 w-4 mr-2"/> Tasks
-                              </GreenButton>                            
-                            }
+                        {(user.roleId == 1 || user.roleId == 3)&& //admin and manager
+                          <>
+                            <GreenButton onClick={() => handleTaskOpen(project.projectId)}>
+                                <Clipboard className="h-4 w-4 mr-2"/> Tasks
+                            </GreenButton>  
+                            <GreenButton onClick={() => handleEdit(project)}>
+                                Update Status
+                            </GreenButton>  
+                          </>
+                        }
                             
                         {(user.roleId == 1 || user.roleId == 2) && //admin and sr.manager
                           <>

@@ -94,10 +94,17 @@ function ProjectDetails(){
     });
 
     //-------------------------------------GET STATUS LIST---------------------------------
-    const { data: statusList = [] } = useQuery({
-        queryKey: ["statusList"],
+    const { data: ProjectStatusList = [] } = useQuery({
+        queryKey: ["ProjectStatusList"],
         queryFn: async () => {
             const res = await commonApi.getProjectStatusList();
+            return res.data.data;
+        },
+    });
+    const { data: TaskStatusList = [] } = useQuery({
+        queryKey: ["TaskStatusList"],
+        queryFn: async () => {
+            const res = await commonApi.getTaskStatusList();
             return res.data.data;
         },
     });
@@ -200,40 +207,46 @@ function ProjectDetails(){
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                        <div className="space-y-2 col-span-full">
-                        <FieldLabel>
-                            Project Name
-                        </FieldLabel>
-                        <InputField
-                            placeholder="Enter Project Name"
-                            value={currProject.projectName}
-                            onChange={(e) => dispatch(setProjectField({ name: "projectName", value: e.target.value }))}
-                        />
-                        </div>
+                        
 
-                        <div className="space-y-2 md:col-span-2 lg:col-span-4">
-                        <FieldLabel>
-                            Description
-                        </FieldLabel>
-                        <TextField
-                            placeholder="Enter Description"
-                            value={currProject.description}
-                            onChange={(e) => dispatch(setProjectField({ name: "description", value: e.target.value }))}
-                        />
-                        </div>
-                        <div className="space-y-2">
-                            <FieldLabel>
-                                Deadline
-                            </FieldLabel>
-                            <DatePicker
-                                selected={currProject.deadline ? new Date(currProject.deadline) : null}
-                                onChange={(date) => dispatch(setProjectField({ name: "deadline", value: date.toISOString() })) }
-                                dateFormat="dd-MM-yyyy"
-                                className="w-full bg-gray-100 rounded-lg border border-slate-300 p-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-slate-800"
-                                placeholderText="Select a Deadline"
-                                
-                            />
-                        </div>
+                        {user.userRole == 1 && user.userRole == 2 && //admin and sr.manager, not for manager
+                        <>
+                            <div className="space-y-2 col-span-full">
+                                <FieldLabel>
+                                    Project Name
+                                </FieldLabel>
+                                <InputField
+                                    placeholder="Enter Project Name"
+                                    value={currProject.projectName}
+                                    onChange={(e) => dispatch(setProjectField({ name: "projectName", value: e.target.value }))}
+                                />
+                            </div>
+
+                            <div className="space-y-2 md:col-span-2 lg:col-span-4">
+                                <FieldLabel>
+                                    Description
+                                </FieldLabel>
+                                <TextField
+                                    placeholder="Enter Description"
+                                    value={currProject.description}
+                                    onChange={(e) => dispatch(setProjectField({ name: "description", value: e.target.value }))}
+                                />
+                                </div>
+                            <div className="space-y-2">
+                                <FieldLabel>
+                                    Deadline
+                                </FieldLabel>
+                                <DatePicker
+                                    selected={currProject.deadline ? new Date(currProject.deadline) : null}
+                                    onChange={(date) => dispatch(setProjectField({ name: "deadline", value: date.toISOString() })) }
+                                    dateFormat="dd-MM-yyyy"
+                                    className="w-full bg-gray-100 rounded-lg border border-slate-300 p-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-slate-800"
+                                    placeholderText="Select a Deadline"
+                                    
+                                />
+                            </div>                        
+                        </>
+                        }
 
                         <div className="space-y-2">
                             <FieldLabel>
@@ -248,7 +261,7 @@ function ProjectDetails(){
                                 <option value={0} disabled>
                                 Select status
                                 </option>
-                                {statusList.map((status) => (
+                                {ProjectStatusList.map((status) => (
                                     <option key={status.statusId} value={status.statusId}>
                                         {status.statusDesc}
                                     </option>
@@ -256,26 +269,30 @@ function ProjectDetails(){
                             </Select>
                         </div>
 
-                        <div className="space-y-2 col-span-2">
-                            <FieldLabel>
-                                Assigned To
-                            </FieldLabel>
-                            <Select
-                                value={currProject.assignedTo || 0}
-                                onChange={(e) =>
-                                    dispatch(setProjectField({ name: "assignedTo", value: Number(e.target.value) }))
-                                }
-                            >
-                                <option value={0} disabled>
-                                Select Individual
-                                </option>
-                                {assignedToList.map((AssignedTo) => (
-                                    <option key={AssignedTo.assignedToId} value={AssignedTo.assignedToId}>
-                                        {AssignedTo.assignedToDesc}
+                        {user.userRole == 1 && user.userRole == 2 && //admin and sr.manager, not for manager
+                        <>
+                            <div className="space-y-2 col-span-2">
+                                <FieldLabel>
+                                    Assigned To
+                                </FieldLabel>
+                                <Select
+                                    value={currProject.assignedTo || 0}
+                                    onChange={(e) =>
+                                        dispatch(setProjectField({ name: "assignedTo", value: Number(e.target.value) }))
+                                    }
+                                >
+                                    <option value={0} disabled>
+                                    Select Individual
                                     </option>
-                                ))}
-                            </Select>
-                        </div>
+                                    {assignedToList.map((AssignedTo) => (
+                                        <option key={AssignedTo.assignedToId} value={AssignedTo.assignedToId}>
+                                            {AssignedTo.assignedToDesc}
+                                        </option>
+                                    ))}
+                                </Select>
+                            </div>
+                        </>
+                        }
 
                     </div>
 
@@ -300,7 +317,7 @@ function ProjectDetails(){
                 </ProjectModal>
 
                 <TaskModal isOpen={isTaskModalOpen} onClose={() => setIsTaskModalOpen(false)}>
-                    <ModalTaskDetails statusList={statusList} assignedToList={assignedToList}/>
+                    <ModalTaskDetails statusList={TaskStatusList} assignedToList={assignedToList}/>
                 </TaskModal>
 
                 <ProjectTable content={"Project"} projectList={projectList} handleEdit={handleEdit} handleDelete={deleteProject} handleTaskOpen={handleTaskOpen}/>
