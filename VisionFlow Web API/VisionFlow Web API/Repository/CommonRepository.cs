@@ -37,16 +37,17 @@ namespace VisionFlow_Web_API.Repository
             }
             return users;
         }
-        public async Task<List<DTO_ProjectStatus>> GetStatusList(string mode,int userId,int roleId)
+        public async Task<List<DTO_ProjectStatus>> GetStatusList(string mode,int id,int userId,int roleId)
         {
             var projects = new List<DTO_ProjectStatus>();
             using (var conn = new NpgsqlConnection(_Configuration.GetConnectionString("PostgresDb")))
             {
                 await conn.OpenAsync();
 
-                using (var cmd = new NpgsqlCommand("SELECT * FROM fn_get_status_list(@p_mode,@p_user_id,@p_role_id)", conn))
+                using (var cmd = new NpgsqlCommand("SELECT * FROM fn_get_status_list(@p_mode,@p_id,@p_user_id,@p_role_id)", conn))
                 {
                     cmd.Parameters.AddWithValue("p_mode", mode);
+                    cmd.Parameters.AddWithValue("p_id", id);
                     cmd.Parameters.AddWithValue("p_user_id", userId);
                     cmd.Parameters.AddWithValue("p_role_id", roleId);
                     using (var reader = await cmd.ExecuteReaderAsync())

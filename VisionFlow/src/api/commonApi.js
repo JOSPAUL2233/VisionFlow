@@ -4,16 +4,20 @@ const commonApi = {
   getRoles: () => {
     return axiosClient.get("/Common/GetRoles")
   },
-  getProjectStatusList: () => {
-    return axiosClient.get("/Common/GetProjectStatusList")
-  },  
-  getTaskStatusList: () => {
-    return axiosClient.get("/Common/GetTaskStatusList")
+  getProjectStatusList: (projectId) => {
+    return axiosClient.get("/Common/GetProjectStatusList", {
+      params: { projectId }
+    })
+  },
+  getTaskStatusList: (taskId) => {
+    return axiosClient.get("/Common/GetTaskStatusList",{
+      params: {taskId}
+    })
   },  
   getAssignedToList: () => {
     return axiosClient.post("/Common/GetAssignedToList")
   },
-  getNavbarList : (user) => {
+  getNavbarList : (user) => {         
     return axiosClient.post("/Common/GetNavbarList",user)
   }
 };

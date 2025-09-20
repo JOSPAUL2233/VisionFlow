@@ -83,11 +83,11 @@ namespace VisionFlow_Web_API.Controllers
 
 
         [HttpGet("GetProjectStatusList")]
-        public async Task<IActionResult> GetProjectStatusList()
+        public async Task<IActionResult> GetProjectStatusList([FromQuery] int projectId)
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
             var roleId = int.TryParse(User.FindFirst("RoleId")?.Value, out var rId) ? rId : 0;
-            var statusList = await _CommonService.GetStatusList("project",userId,roleId);
+            var statusList = await _CommonService.GetStatusList("project", projectId,userId, roleId);
 
             if (statusList == null)
             {
@@ -116,11 +116,11 @@ namespace VisionFlow_Web_API.Controllers
             });
         }
         [HttpGet("GetTaskStatusList")]
-        public async Task<IActionResult> GetTaskStatusList()
+        public async Task<IActionResult> GetTaskStatusList([FromQuery] int taskId)
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
             var roleId = int.TryParse(User.FindFirst("RoleId")?.Value, out var rId) ? rId : 0;
-            var statusList = await _CommonService.GetStatusList("task",userId,roleId);
+            var statusList = await _CommonService.GetStatusList("task", taskId, userId,roleId);
 
             if (statusList == null)
             {

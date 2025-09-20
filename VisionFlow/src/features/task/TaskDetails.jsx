@@ -29,7 +29,7 @@ function TaskDetails(){
   
 //#region-------------------------------------------------------API CRUD HANDLING SECTION-----------------------------------------------------
 
-    //-----------------------------------GET USER LIST-----------------------------------
+    //-----------------------------------GET TASK LIST-----------------------------------
 
     const {data:TaskList=[],isLoading,error,isError} = useQuery({
         queryKey : ["tasks"],
@@ -89,10 +89,10 @@ function TaskDetails(){
 
     //-------------------------------------GET STATUS LIST---------------------------------
     const { data: statusList = [] } = useQuery({
-        queryKey: ["statusList"],
+        queryKey: ["statusList",currTask.taskId],
         queryFn: async () => {
             console.log("statusList got called");
-            const res = await commonApi.getTaskStatusList();
+            const res = await commonApi.getTaskStatusList(currTask.taskId);
             console.log("res:",res);
             return res.data.data;
         },

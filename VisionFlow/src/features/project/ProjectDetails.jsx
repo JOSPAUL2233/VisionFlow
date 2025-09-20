@@ -30,6 +30,8 @@ function ProjectDetails(){
     const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
 
     const {currProject,onEdit} = useSelector((state) => state.project);
+    const {currTask} = useSelector((state) => state.task);
+    
     const { user } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 
@@ -95,21 +97,21 @@ function ProjectDetails(){
 
     //-------------------------------------GET STATUS LIST---------------------------------
     const { data: ProjectStatusList = [] } = useQuery({
-        queryKey: ["ProjectStatusList"],
+        queryKey: ["ProjectStatusList",currProject.projectId],
         queryFn: async () => {
-            const res = await commonApi.getProjectStatusList();
+            const res = await commonApi.getProjectStatusList(currProject.projectId);
             return res.data.data;
         },
     });
     const { data: TaskStatusList = [] } = useQuery({
-        queryKey: ["TaskStatusList"],
+        queryKey: ["TaskStatusList",currTask.taskId],
         queryFn: async () => {
-            const res = await commonApi.getTaskStatusList();
+            const res = await commonApi.getTaskStatusList(currTask.taskId);
             return res.data.data;
         },
     });
     
-    //-------------------------------------GET STATUS LIST---------------------------------
+    //-------------------------------------GET ASSIGNED TO LIST---------------------------------
     const { data: assignedToList = [] } = useQuery({
         queryKey: ["assignedToList"],
         queryFn: async () => {
@@ -209,7 +211,7 @@ function ProjectDetails(){
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                         
 
-                        {user.userRole == 1 && user.userRole == 2 && //admin and sr.manager, not for manager
+                        {(user.roleId == 1 || user.roleId == 2)&& //admin and sr.manager, not for manager
                         <>
                             <div className="space-y-2 col-span-full">
                                 <FieldLabel>
@@ -242,7 +244,6 @@ function ProjectDetails(){
                                     dateFormat="dd-MM-yyyy"
                                     className="w-full bg-gray-100 rounded-lg border border-slate-300 p-2 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-slate-800"
                                     placeholderText="Select a Deadline"
-                                    
                                 />
                             </div>                        
                         </>
@@ -269,11 +270,11 @@ function ProjectDetails(){
                             </Select>
                         </div>
 
-                        {user.userRole == 1 && user.userRole == 2 && //admin and sr.manager, not for manager
+                        {(user.roleId == 1 || user.roleId == 2)&& //admin and sr.manager, not for manager
                         <>
                             <div className="space-y-2 col-span-2">
                                 <FieldLabel>
-                                    Assigned To
+                                    Assigned To 
                                 </FieldLabel>
                                 <Select
                                     value={currProject.assignedTo || 0}
@@ -301,8 +302,8 @@ function ProjectDetails(){
                         <GreenButton 
                             onClick={onEdit ? () => updateProject(currProject) : () => createProject(currProject)}
                         >
-                        {onEdit ? <Edit3 className="h-4 w-4 mr-2" /> : <FolderKanban className="h-4 w-4 mr-2" />}
-                        {onEdit ? "Update Project" : "Add Project"}
+                            {onEdit ? <Edit3 className="h-4 w-4 mr-2" /> : <FolderKanban className="h-4 w-4 mr-2" />}
+                            {onEdit ? "Update Project" : "Add Project"}
                         </GreenButton>
 
                         {onEdit && (
@@ -312,7 +313,6 @@ function ProjectDetails(){
                         </GrayButton>
                         )}
                     </div>
-                    {/* </div> */}
 
                 </ProjectModal>
 

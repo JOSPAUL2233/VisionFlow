@@ -30,7 +30,7 @@ function LoginPage() {
       if (res.data.success) {
         dispatch(setUser(res.data.user));
         toast.success("Login successful!!");
-        navigate("/projects");
+        navigate("/dashboard");
       }
     } catch (err) {
       toast.error(err.response?.data?.message || "Login failed !!");

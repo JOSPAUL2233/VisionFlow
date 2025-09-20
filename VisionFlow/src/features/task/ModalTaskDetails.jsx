@@ -35,7 +35,6 @@ function ModalTaskDetails({statusList,assignedToList}){
         }
     });
 
-
     //-----------------------------------Create Task-----------------------------------
     const { mutate: createTask, isPending: isCreating } = useMutation({
         mutationFn: async (TaskDetails) => {
