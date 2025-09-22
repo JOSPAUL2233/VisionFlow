@@ -183,6 +183,18 @@
         }
       }
     },
+    "/api/Project/GetProjectReviewList": {
+      "post": {
+        "tags": [
+          "Project"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Project/CreateProject": {
       "post": {
         "tags": [
@@ -589,6 +601,10 @@
           "userId": {
             "type": "integer",
             "format": "int32",
+            "nullable": true
+          },
+          "projectReview": {
+            "type": "string",
             "nullable": true
           }
         },

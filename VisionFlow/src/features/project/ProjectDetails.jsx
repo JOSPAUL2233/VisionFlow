@@ -21,6 +21,7 @@ import ProjectModal from "../../components/ProjectModal";
 import TextField from "../../ui/formElements/TextField";
 import ModalTaskDetails from "../task/ModalTaskDetails";
 import TaskModal from "../../components/TaskModal";
+import ConfirmationModal from "../../ui/ConfirmationModal";
 
 function ProjectDetails(){
 
@@ -28,6 +29,7 @@ function ProjectDetails(){
 
     const [isProjectModalOpen, setisProjectModalOpen] = useState(false);
     const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
+    const [confirmOpen, setConfirmOpen] = useState(false);
 
     const {currProject,onEdit} = useSelector((state) => state.project);
     const {currTask} = useSelector((state) => state.task);
@@ -90,8 +92,10 @@ function ProjectDetails(){
             setisProjectModalOpen(false);
             toast.success("Project updated successfully 🎉");
         },
-        onError: () => {
+        onError: (error) => {
+            if (error.message !== "User cancelled sending for review") {
             toast.error("Failed to update Project ❌");
+            }
         },
     });
 
@@ -151,6 +155,16 @@ function ProjectDetails(){
         setIsTaskModalOpen(true);            
     };
 
+    
+  const handleUpdateClick = () => {
+        if (currProject.status === 4) {
+            setConfirmOpen(true); // open modal
+        } else {
+            updateProject(currProject);
+        }
+  };
+
+
     if (isLoading) {
         return (
             <div className="p-12 text-center text-slate-600">Loading Projects...</div>
@@ -196,6 +210,16 @@ function ProjectDetails(){
                     </div>
                 }
 
+                <ConfirmationModal
+                    isOpen={confirmOpen}
+                    onClose={() => setConfirmOpen(false)}
+                    onConfirm={() => {
+                        updateProject(currProject); // use redux currProject directly
+                        setConfirmOpen(false);
+                    }}
+                    title="Send for Review?"
+                    message="Do you want to send this project for review?"
+                />
                 <ProjectModal isOpen={isProjectModalOpen} onClose={handleProjectOnClose}>
                 
                     {/* <div className="bg-white/80 backdrop-blur-sm shadow-xl rounded-2xl p-6 mb-0 border border-white/20"> */}
@@ -259,7 +283,7 @@ function ProjectDetails(){
                                     dispatch(setProjectField({ name: "status", value: Number(e.target.value) }))
                                 }
                             >
-                                <option value={0} disabled>
+                                <option value={0}>
                                 Select status
                                 </option>
                                 {ProjectStatusList.map((status) => (
@@ -299,8 +323,8 @@ function ProjectDetails(){
 
                     <div className="flex flex-wrap gap-4">
 
-                        <GreenButton 
-                            onClick={onEdit ? () => updateProject(currProject) : () => createProject(currProject)}
+                        <GreenButton
+                            onClick={onEdit ? handleUpdateClick : () => createProject(currProject)}
                         >
                             {onEdit ? <Edit3 className="h-4 w-4 mr-2" /> : <FolderKanban className="h-4 w-4 mr-2" />}
                             {onEdit ? "Update Project" : "Add Project"}

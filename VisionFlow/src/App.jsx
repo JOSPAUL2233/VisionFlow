@@ -17,6 +17,8 @@ import Layout from "./components/shared/Layout";
 import commonApi from "./api/commonApi";
 import DashboardDetails from "./features/dashboard/DashboardDetails";
 import TaskHome from "./pages/TaskHome";
+import ReviewTaskHome from "./pages/ReviewTaskHome";
+import ReviewProjectHome from "./pages/ReviewProjectHome";
 
 const queryClient = new QueryClient();
 
@@ -115,6 +117,26 @@ function App() {
                 <AuthCheck>
                   <Layout>
                     <TaskHome />
+                  </Layout>
+                </AuthCheck>
+              }
+            />
+            <Route
+              path="/projectReview"
+              element={
+                <AuthCheck>
+                  <Layout>
+                    <ReviewProjectHome />
+                  </Layout>
+                </AuthCheck>
+              }
+            />
+            <Route
+              path="/taskReview"
+              element={
+                <AuthCheck>
+                  <Layout>
+                    <ReviewTaskHome />
                   </Layout>
                 </AuthCheck>
               }

@@ -49,7 +49,43 @@ namespace VisionFlow_Web_API.Repository
             return users;
         }
 
+        
+        public async Task<List<DTO_ProjectDetails>> GetProjectReviewList(int UserId, int roleId)
+        {
+            var users = new List<DTO_ProjectDetails>();
+            using (var conn = new NpgsqlConnection(_Configuration.GetConnectionString("PostgresDb")))
+            {
+                await conn.OpenAsync();
 
+                using (var cmd = new NpgsqlCommand("SELECT * FROM fn_get_project_review_list(@p_user_id,@p_role_id)", conn))
+                {
+                    cmd.Parameters.AddWithValue("p_user_id", UserId);
+                    cmd.Parameters.AddWithValue("p_role_id", roleId);
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            users.Add(new DTO_ProjectDetails
+                            {
+                                ProjectId = reader.GetInt32(reader.GetOrdinal("project_id")),
+                                ProjectName = reader.GetString(reader.GetOrdinal("project_name")),
+                                Description = reader.GetString(reader.GetOrdinal("description")),
+                                Deadline = reader.GetDateTime(reader.GetOrdinal("deadline")),
+                                Status = reader.GetInt32(reader.GetOrdinal("status")),
+                                StatusDesc = reader.IsDBNull(reader.GetOrdinal("status_desc")) ? null : reader.GetString(reader.GetOrdinal("status_desc")),
+                                AssignedBy = reader.GetInt32(reader.GetOrdinal("assigned_by")),
+                                AssignedByDesc = reader.IsDBNull(reader.GetOrdinal("assigned_by_desc")) ? null : reader.GetString(reader.GetOrdinal("assigned_by_desc")),
+                                AssignedTo = reader.GetInt32(reader.GetOrdinal("assigned_to")),
+                                AssignedToDesc = reader.IsDBNull(reader.GetOrdinal("assigned_to_desc")) ? null : reader.GetString(reader.GetOrdinal("assigned_to_desc")),
+                                ProjectReview = reader.IsDBNull(reader.GetOrdinal("project_review")) ? null : reader.GetString(reader.GetOrdinal("project_review"))
+
+                            });
+                        }
+                    }
+                }
+            }
+            return users;
+        }
         public async Task<int> CreateProject(DTO_ProjectDetails projectDto,int userId,int roleId)
         {
             int newProjectId = 0;

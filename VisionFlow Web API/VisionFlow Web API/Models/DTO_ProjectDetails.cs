@@ -16,6 +16,7 @@
         public int? ReturnId { get; set; }
         public int? RoleId { get; set; }
         public int? userId { get; set; }
+        public string? ProjectReview { get; set; }
 
 
     }

@@ -4,6 +4,9 @@ const projectApi = {
   getProjectList: () => {
     return axiosClient.post("/Project/GetProjectList")
   },
+  getProjectReviewList: () => {
+    return axiosClient.post("/Project/GetProjectReviewList")
+  },
   createProject: (project) => {
     return axiosClient.post("/Project/CreateProject", project)
   },

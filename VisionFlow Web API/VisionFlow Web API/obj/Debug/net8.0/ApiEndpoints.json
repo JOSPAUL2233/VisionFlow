@@ -157,6 +157,16 @@
   },
   {
     "ContainingType": "VisionFlow_Web_API.Controllers.ProjectController",
+    "Method": "GetProjectReviewList",
+    "RelativePath": "api/Project/GetProjectReviewList",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "VisionFlow_Web_API.Controllers.ProjectController",
     "Method": "UpdateProject",
     "RelativePath": "api/Project/UpdateProject",
     "HttpMethod": "PUT",

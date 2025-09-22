@@ -17,6 +17,10 @@ namespace VisionFlow_Web_API.Service
         {
             return await _ProjectRepository.GetProjectList(UserId,roleId);
         }
+        public async Task<List<DTO_ProjectDetails>> GetProjectReviewList(int UserId, int roleId)
+        {
+            return await _ProjectRepository.GetProjectReviewList(UserId, roleId);
+        }
 
         public async Task<int> CreateProject(DTO_ProjectDetails projectDto,int userId,int roleId)
         {

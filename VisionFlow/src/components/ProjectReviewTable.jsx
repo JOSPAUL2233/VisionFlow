@@ -1,20 +1,13 @@
-import { Users,FolderKanban, UserPlus, Edit3, Trash2, X, Mail, Phone, User, Cone, Clipboard } from "lucide-react";
-import DeleteButton from "../ui/DeleteButton";
-import EditButton from "../ui/EditButton"
-import Col from "../ui/tableElements/Col";
-import Td from "../ui/tableElements/Td";
+import { FolderKanban, Clipboard } from "lucide-react";
 import Tr from "../ui/tableElements/Tr";
-import { format } from "date-fns";
+import Td from "../ui/tableElements/Td";
+import Col from "../ui/tableElements/Col";
 import GreenButton from "../ui/GreenButton";
-import { useSelector } from "react-redux";
+import { format } from "date-fns";
 
+function ProjectReviewTable({projectList,handleReview,handleViewTasks}){
 
-function ProjectTable({content,projectList,handleEdit,handleDelete,handleTaskOpen}){
-
-  const {user} = useSelector((state)=> state.auth)
-
-    return <> 
-
+    return <>
         <div className="bg-white/80 backdrop-blur-sm shadow-xl rounded-2xl border border-white/20 overflow-hidden">
           
           {(!projectList || projectList.length === 0) ? (
@@ -23,8 +16,8 @@ function ProjectTable({content,projectList,handleEdit,handleDelete,handleTaskOpe
               <div className="bg-slate-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <FolderKanban className="h-8 w-8 text-slate-400" />
               </div>
-              <h3 className="text-lg font-semibold text-slate-800 mb-2">No {content}s found</h3>
-              <p className="text-slate-600">Add your first {content} to get started</p>
+              <h3 className="text-lg font-semibold text-slate-800 mb-2">No Projects are there to review</h3>
+              <p className="text-slate-600">No projects to review</p>
             </div>
 
           ) : (
@@ -36,8 +29,8 @@ function ProjectTable({content,projectList,handleEdit,handleDelete,handleTaskOpe
                     <FolderKanban className="h-8 w-8 text-slate-400" />
                   </div>
                   <div>
-                    <h2 className="text-2xl font-semibold text-slate-800">{content} List</h2>
-                    <p className="text-slate-600">Total {content}s: {projectList.length}</p>
+                    <h2 className="text-2xl font-semibold text-slate-800">Projects to review</h2>
+                    <p className="text-slate-600">Total pending reviews: {projectList.length}</p>
                   </div>
                 </div>
               </div>
@@ -98,29 +91,15 @@ function ProjectTable({content,projectList,handleEdit,handleDelete,handleTaskOpe
                       </Td>
                       <Td>
                         <div className="flex justify-center gap-4">
-                            
-                        {(user.roleId == 1 || user.roleId == 3)&& //admin and manager
-                          <>
-                            <GreenButton onClick={() => handleTaskOpen(project.projectId)}>
-                                <Clipboard className="h-4 w-4 mr-2"/> Tasks
+                            <GreenButton onClick={() => handleViewTasks(project.projectId)}>
+                                <Clipboard className="h-4 w-4 mr-2"/> View Tasks
                             </GreenButton>  
                             
                             <GreenButton 
-                              onClick={() => handleEdit(project)} 
-                              disabled={project.status ==  3|| project.status ==  4}
+                              onClick={() => handleReview(project)} 
                             >
-                                Update Status
-                            </GreenButton>  
-                          </>
-                        }
-                            
-                        {(user.roleId == 1 || user.roleId == 2) && //admin and sr.manager
-                          <>
-                            <EditButton onClick={() => handleEdit(project)}/>
-                            <DeleteButton onClick={() => handleDelete(project)}/>
-                          </>
-                        }
-                        
+                                Review
+                            </GreenButton>                          
                         </div>
                       </Td>
                     </Tr>
@@ -130,7 +109,7 @@ function ProjectTable({content,projectList,handleEdit,handleDelete,handleTaskOpe
             </div>
 
           )}
-        </div>    
+        </div>   
     </>
 }
-export default ProjectTable;
+export default ProjectReviewTable;

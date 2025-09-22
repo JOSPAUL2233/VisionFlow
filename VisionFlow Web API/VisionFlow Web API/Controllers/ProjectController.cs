@@ -40,6 +40,28 @@ namespace VisionFlow_Web_API.Controllers
             return Ok(new { success = true, data = projects });
         }
 
+        [Authorize]
+        [HttpPost("GetProjectReviewList")]
+        public async Task<IActionResult> GetProjectReviewList()
+        {
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
+            var roleId = int.TryParse(User.FindFirst("RoleId")?.Value, out var rId) ? rId : 0;
+
+            var projects = await _ProjectService.GetProjectReviewList(userId, roleId);
+
+            if (projects == null)
+            {
+                return Ok(new { success = false, message = "Could not fetch project details for review.", data = projects });
+            }
+
+            if (!projects.Any())
+            {
+                return Ok(new { success = false, message = "No Projects to review Found.", data = projects });
+            }
+
+            return Ok(new { success = true, data = projects });
+        }
+
         [Authorize(Roles = "Admin,Sr. Manager")]
         [HttpPost("CreateProject")]
         public async Task<IActionResult> CreateProject([FromBody] DTO_ProjectDetails projectDto)
