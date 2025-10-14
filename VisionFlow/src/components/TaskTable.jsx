@@ -9,7 +9,7 @@ import GreenButton from "../ui/GreenButton";
 import { useSelector } from "react-redux";
 
 
-function TaskTable({content,taskList,handleEdit,handleDelete}){
+function TaskTable({mode,content,taskList,handleEdit,handleDelete}){
 
 //  const {currProject} = useSelector(state=>state.project);
     const { user } = useSelector((state) => state.auth);
@@ -108,27 +108,35 @@ function TaskTable({content,taskList,handleEdit,handleDelete}){
                             {task.assignedByDesc}
                         </Col>
                       </Td>
-                      {
-                        user.roleId == 4 && //employee
-                        <Td>
-                          <div className="flex justify-center gap-4">
-                            <GreenButton onClick={() => handleEdit(task)}>
-                                Update Status
-                            </GreenButton>
-                          </div>
-                        </Td>
-                      }
-                      {
-                        user.roleId == 3 && //manager
-                        <Td>
-                          <div className="flex justify-center gap-4">
-                            <GreenButton onClick={() => handleEdit(task)}>
-                            Edit
-                            </GreenButton>
-                            <DeleteButton onClick={() => handleDelete(task)}/>                          
-                          </div>
-                        </Td>
-                      }
+
+                    {
+                      mode === "view" ? null : (
+                        <>
+                          {user.roleId === 4 && ( // employee
+                            <Td>
+                              <div className="flex justify-center gap-4">
+                                <GreenButton   
+                                  disabled={task.status === 4}
+                                  onClick={() => handleEdit(task)}>
+                                    Update Status
+                                </GreenButton>
+                              </div>
+                            </Td>
+                          )}
+
+                          {user.roleId === 3 && ( // manager
+                            <Td>
+                              <div className="flex justify-center gap-4">
+                                <GreenButton onClick={() => handleEdit(task)}>
+                                  Edit
+                                </GreenButton>
+                                <DeleteButton onClick={() => handleDelete(task)} />
+                              </div>
+                            </Td>
+                          )}
+                        </>
+                      )
+                    }
 
                     </Tr>
                   ))}

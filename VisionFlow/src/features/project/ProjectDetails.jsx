@@ -150,12 +150,11 @@ function ProjectDetails(){
     };
 
     const handleTaskOpen = (projectId) => {
-        // dispatch(setTaskField({name:"projectId",value:projectId}));
         dispatch(setTaskField({name:"projectId",value:projectId}));
         setIsTaskModalOpen(true);            
     };
 
-    
+
   const handleUpdateClick = () => {
         if (currProject.status === 4) {
             setConfirmOpen(true); // open modal

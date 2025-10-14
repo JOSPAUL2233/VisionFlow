@@ -18,6 +18,9 @@ const taskApi = {
     return axiosClient.delete("/Task/DeleteTask", {
       data: task
     });
+  },
+  getTasksUnderReview: () => {
+    return axiosClient.post("/Task/getTasksUnderReview")
   }
 };
 
