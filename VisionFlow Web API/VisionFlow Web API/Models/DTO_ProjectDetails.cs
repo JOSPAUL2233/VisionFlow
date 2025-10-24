@@ -9,6 +9,7 @@
         public DateTime? Deadline { get; set; }
         public int? Status { get; set; }
         public string? StatusDesc { get; set; }
+        public string? customStatusDesc { get; set; }
         public int? AssignedBy { get; set; }
         public string? AssignedByDesc { get; set; }
         public int? AssignedTo { get; set; }
@@ -17,7 +18,6 @@
         public int? RoleId { get; set; }
         public int? userId { get; set; }
         public string? ProjectReview { get; set; }
-
 
     }
 }

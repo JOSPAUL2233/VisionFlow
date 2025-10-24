@@ -19,7 +19,7 @@ namespace VisionFlow_Web_API.Controllers
         }
 
         [Authorize]
-        [HttpPost("GetProjectList")]
+        [HttpGet("GetProjectList")]
         public async Task<IActionResult> GetProjectList()
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");
@@ -41,7 +41,7 @@ namespace VisionFlow_Web_API.Controllers
         }
 
         [Authorize]
-        [HttpPost("GetProjectReviewList")]
+        [HttpGet("GetProjectReviewList")]
         public async Task<IActionResult> GetProjectReviewList()
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "0");

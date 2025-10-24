@@ -3,6 +3,34 @@
   "WorkspaceRootPath": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{59A04B47-7535-4FAB-B787-FAE488D81711}|VisionFlow Web API\\VisionFlow Web API.csproj|d:\\projects\\visionflow\\visionflow web api\\visionflow web api\\repository\\projectrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59A04B47-7535-4FAB-B787-FAE488D81711}|VisionFlow Web API\\VisionFlow Web API.csproj|solutionrelative:visionflow web api\\repository\\projectrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59A04B47-7535-4FAB-B787-FAE488D81711}|VisionFlow Web API\\VisionFlow Web API.csproj|d:\\projects\\visionflow\\visionflow web api\\visionflow web api\\repository\\usermanagementrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59A04B47-7535-4FAB-B787-FAE488D81711}|VisionFlow Web API\\VisionFlow Web API.csproj|solutionrelative:visionflow web api\\repository\\usermanagementrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59A04B47-7535-4FAB-B787-FAE488D81711}|VisionFlow Web API\\VisionFlow Web API.csproj|d:\\projects\\visionflow\\visionflow web api\\visionflow web api\\models\\dto_projectstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59A04B47-7535-4FAB-B787-FAE488D81711}|VisionFlow Web API\\VisionFlow Web API.csproj|solutionrelative:visionflow web api\\models\\dto_projectstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59A04B47-7535-4FAB-B787-FAE488D81711}|VisionFlow Web API\\VisionFlow Web API.csproj|d:\\projects\\visionflow\\visionflow web api\\visionflow web api\\models\\dto_projectdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59A04B47-7535-4FAB-B787-FAE488D81711}|VisionFlow Web API\\VisionFlow Web API.csproj|solutionrelative:visionflow web api\\models\\dto_projectdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59A04B47-7535-4FAB-B787-FAE488D81711}|VisionFlow Web API\\VisionFlow Web API.csproj|d:\\projects\\visionflow\\visionflow web api\\visionflow web api\\interfaces\\irepositories\\iprojectrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59A04B47-7535-4FAB-B787-FAE488D81711}|VisionFlow Web API\\VisionFlow Web API.csproj|solutionrelative:visionflow web api\\interfaces\\irepositories\\iprojectrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59A04B47-7535-4FAB-B787-FAE488D81711}|VisionFlow Web API\\VisionFlow Web API.csproj|d:\\projects\\visionflow\\visionflow web api\\visionflow web api\\controllers\\projectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59A04B47-7535-4FAB-B787-FAE488D81711}|VisionFlow Web API\\VisionFlow Web API.csproj|solutionrelative:visionflow web api\\controllers\\projectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59A04B47-7535-4FAB-B787-FAE488D81711}|VisionFlow Web API\\VisionFlow Web API.csproj|d:\\projects\\visionflow\\visionflow web api\\visionflow web api\\controllers\\usermanagementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59A04B47-7535-4FAB-B787-FAE488D81711}|VisionFlow Web API\\VisionFlow Web API.csproj|solutionrelative:visionflow web api\\controllers\\usermanagementcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{59A04B47-7535-4FAB-B787-FAE488D81711}|VisionFlow Web API\\VisionFlow Web API.csproj|d:\\projects\\visionflow\\visionflow web api\\visionflow web api\\controllers\\commoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{59A04B47-7535-4FAB-B787-FAE488D81711}|VisionFlow Web API\\VisionFlow Web API.csproj|solutionrelative:visionflow web api\\controllers\\commoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -14,34 +42,114 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CommonController.cs",
-              "DocumentMoniker": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Controllers\\CommonController.cs",
-              "RelativeDocumentMoniker": "VisionFlow Web API\\Controllers\\CommonController.cs",
-              "ToolTip": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Controllers\\CommonController.cs",
-              "RelativeToolTip": "VisionFlow Web API\\Controllers\\CommonController.cs",
-              "ViewState": "AgIAAE4AAAAAAAAAAAAEwFkAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-20T14:50:40.828Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedHeight": 90,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProjectRepository.cs",
+              "DocumentMoniker": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Repository\\ProjectRepository.cs",
+              "RelativeDocumentMoniker": "VisionFlow Web API\\Repository\\ProjectRepository.cs",
+              "ToolTip": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Repository\\ProjectRepository.cs",
+              "RelativeToolTip": "VisionFlow Web API\\Repository\\ProjectRepository.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAnwFUAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T17:51:37.472Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IProjectRepository.cs",
+              "DocumentMoniker": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Interfaces\\IRepositories\\IProjectRepository.cs",
+              "RelativeDocumentMoniker": "VisionFlow Web API\\Interfaces\\IRepositories\\IProjectRepository.cs",
+              "ToolTip": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Interfaces\\IRepositories\\IProjectRepository.cs",
+              "RelativeToolTip": "VisionFlow Web API\\Interfaces\\IRepositories\\IProjectRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T17:51:29.359Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DTO_ProjectStatus.cs",
+              "DocumentMoniker": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Models\\DTO_ProjectStatus.cs",
+              "RelativeDocumentMoniker": "VisionFlow Web API\\Models\\DTO_ProjectStatus.cs",
+              "ToolTip": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Models\\DTO_ProjectStatus.cs",
+              "RelativeToolTip": "VisionFlow Web API\\Models\\DTO_ProjectStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T17:50:04.963Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DTO_ProjectDetails.cs",
+              "DocumentMoniker": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Models\\DTO_ProjectDetails.cs",
+              "RelativeDocumentMoniker": "VisionFlow Web API\\Models\\DTO_ProjectDetails.cs",
+              "ToolTip": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Models\\DTO_ProjectDetails.cs",
+              "RelativeToolTip": "VisionFlow Web API\\Models\\DTO_ProjectDetails.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T16:09:18.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserManagementRepository.cs",
+              "DocumentMoniker": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Repository\\UserManagementRepository.cs",
+              "RelativeDocumentMoniker": "VisionFlow Web API\\Repository\\UserManagementRepository.cs",
+              "ToolTip": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Repository\\UserManagementRepository.cs",
+              "RelativeToolTip": "VisionFlow Web API\\Repository\\UserManagementRepository.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAYwHAAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T15:15:30.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserManagementController.cs",
+              "DocumentMoniker": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Controllers\\UserManagementController.cs",
+              "RelativeDocumentMoniker": "VisionFlow Web API\\Controllers\\UserManagementController.cs",
+              "ToolTip": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Controllers\\UserManagementController.cs",
+              "RelativeToolTip": "VisionFlow Web API\\Controllers\\UserManagementController.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAYwFAAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T15:15:30.963Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProjectController.cs",
+              "DocumentMoniker": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Controllers\\ProjectController.cs",
+              "RelativeDocumentMoniker": "VisionFlow Web API\\Controllers\\ProjectController.cs",
+              "ToolTip": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Controllers\\ProjectController.cs",
+              "RelativeToolTip": "VisionFlow Web API\\Controllers\\ProjectController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAUwCMAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-17T11:47:16.821Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CommonController.cs",
+              "DocumentMoniker": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Controllers\\CommonController.cs",
+              "RelativeDocumentMoniker": "VisionFlow Web API\\Controllers\\CommonController.cs",
+              "ToolTip": "D:\\Projects\\VisionFlow\\VisionFlow Web API\\VisionFlow Web API\\Controllers\\CommonController.cs",
+              "RelativeToolTip": "VisionFlow Web API\\Controllers\\CommonController.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAEwGwAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-20T14:50:40.828Z"
             }
           ]
         }

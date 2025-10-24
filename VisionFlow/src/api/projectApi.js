@@ -2,10 +2,10 @@ import axiosClient from "./axiosClient";
 
 const projectApi = {
   getProjectList: () => {
-    return axiosClient.post("/Project/GetProjectList")
+    return axiosClient.get("/Project/GetProjectList")
   },
   getProjectReviewList: () => {
-    return axiosClient.post("/Project/GetProjectReviewList")
+    return axiosClient.get("/Project/GetProjectReviewList")
   },
   createProject: (project) => {
     return axiosClient.post("/Project/CreateProject", project)

@@ -6,11 +6,10 @@ import GreenButton from "../ui/GreenButton";
 import { format } from "date-fns";
 
 function ProjectReviewTable({projectList,handleReview,handleViewTasks}){
-
     return <>
         <div className="bg-white/80 backdrop-blur-sm shadow-xl rounded-2xl border border-white/20 overflow-hidden">
           
-          {(true) ? (
+          {(!projectList || projectList.length == 0) ? (
 
             <div className="p-12 text-center">
               <div className="bg-slate-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
@@ -76,7 +75,7 @@ function ProjectReviewTable({projectList,handleReview,handleViewTasks}){
                       </Td>
                       <Td>
                         <Col>
-                            {project.statusDesc}
+                            {project.customStatusDesc}
                         </Col>
                       </Td>
                       <Td>

@@ -83,7 +83,7 @@ function ProjectTable({content,projectList,handleEdit,handleDelete,handleTaskOpe
                       </Td>
                       <Td>
                         <Col>
-                            {project.statusDesc}
+                            {project.customStatusDesc}
                         </Col>
                       </Td>
                       <Td>

@@ -4,5 +4,6 @@
     {
         public int StatusId { get; set; }
         public String StatusDesc { get; set; }
+        public String customStatusDesc { get; set; }
     }
 }

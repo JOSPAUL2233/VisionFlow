@@ -143,7 +143,7 @@ function ProjectDetails(){
         dispatch(resetCurrProject());
     }
     
-    const handleReset = () => {
+    const handleReset = (projectId) => {
         dispatch(resetCurrProject());
         // dispatch(setTaskField({name:"projectId",value:projectId}));
         dispatch(setTaskField({name:"projectId",value:1}));
@@ -155,13 +155,13 @@ function ProjectDetails(){
     };
 
 
-  const handleUpdateClick = () => {
+    const handleUpdateClick = () => {
         if (currProject.status === 4) {
             setConfirmOpen(true); // open modal
         } else {
             updateProject(currProject);
         }
-  };
+    };
 
 
     if (isLoading) {
@@ -256,7 +256,7 @@ function ProjectDetails(){
                                     value={currProject.description}
                                     onChange={(e) => dispatch(setProjectField({ name: "description", value: e.target.value }))}
                                 />
-                                </div>
+                            </div>
                             <div className="space-y-2">
                                 <FieldLabel>
                                     Deadline
@@ -270,6 +270,13 @@ function ProjectDetails(){
                                 />
                             </div>                        
                         </>
+                        }
+
+                        {
+                            currProject.status == 5 &&
+                            <h2 class="text-2xl text-green-200 font-semibold text-slate-800">
+                                Review Accepted!
+                            </h2>
                         }
 
                         <div className="space-y-2">
@@ -330,7 +337,7 @@ function ProjectDetails(){
                         </GreenButton>
 
                         {onEdit && (
-                        <GrayButton onClick={handleReset} >
+                        <GrayButton onClick={()=>handleReset(currProject.projectId)} >
                             <X className="h-4 w-4 mr-2" />
                             Cancel
                         </GrayButton>
